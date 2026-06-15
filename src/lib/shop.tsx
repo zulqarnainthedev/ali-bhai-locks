@@ -807,7 +807,10 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-white">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              {["Home","Products","About Us","Supply Network","Contact"].map(l => <li key={l}><a href="#" className="hover:text-amber-500">{l}</a></li>)}
+              <li><Link to="/" className="hover:text-amber-500">Home</Link></li>
+              <li><Link to="/products" className="hover:text-amber-500">Products</Link></li>
+              <li><Link to="/about" className="hover:text-amber-500">About Us</Link></li>
+              <li><a href="/#contact" className="hover:text-amber-500">Contact</a></li>
             </ul>
           </div>
           <div>
