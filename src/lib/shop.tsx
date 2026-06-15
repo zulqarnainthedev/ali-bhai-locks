@@ -404,26 +404,46 @@ export function DualIdentity() {
   );
 }
 
-export function Products() {
+export function Products({
+  limit,
+  showFilters = true,
+  showExploreCta = false,
+  heading = "Our Product Range",
+  eyebrow = "Catalog",
+  subhead = "Manufactured in Aligarh • Supplied across India",
+}: {
+  limit?: number;
+  showFilters?: boolean;
+  showExploreCta?: boolean;
+  heading?: string;
+  eyebrow?: string;
+  subhead?: string;
+} = {}) {
   const dispatch = useDispatch();
   const filter = useSelector((s: RootState) => s.ui.activeFilter);
-  const list = useMemo(() => filter === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === filter), [filter]);
+  const fullList = useMemo(
+    () => (filter === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === filter)),
+    [filter]
+  );
+  const list = limit ? fullList.slice(0, limit) : fullList;
   return (
     <section id="products" className="bg-slate-50 py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Catalog</span>
-          <h2 className="mt-2 font-display text-4xl font-bold text-slate-900">Our Product Range</h2>
-          <p className="mt-2 text-slate-600">Manufactured in Aligarh • Supplied across India</p>
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-600">{eyebrow}</span>
+          <h2 className="mt-2 font-display text-4xl font-bold text-slate-900">{heading}</h2>
+          <p className="mt-2 text-slate-600">{subhead}</p>
         </div>
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {FILTERS.map(f => (
-            <button key={f} onClick={() => dispatch(setActiveFilter(f))}
-              className={`rounded-full px-5 py-2 text-sm font-semibold transition ${filter === f ? "bg-slate-900 text-white" : "bg-white text-slate-700 hover:bg-slate-200"}`}>
-              {f}
-            </button>
-          ))}
-        </div>
+        {showFilters && (
+          <div className="mt-10 flex flex-wrap justify-center gap-2">
+            {FILTERS.map(f => (
+              <button key={f} onClick={() => dispatch(setActiveFilter(f))}
+                className={`rounded-full px-5 py-2 text-sm font-semibold transition ${filter === f ? "bg-slate-900 text-white" : "bg-white text-slate-700 hover:bg-slate-200"}`}>
+                {f}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {list.map(p => (
             <div key={p.id} className="group overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-xl">
@@ -446,6 +466,14 @@ export function Products() {
             </div>
           ))}
         </div>
+        {showExploreCta && (
+          <div className="mt-12 text-center">
+            <p className="text-slate-600">Explore our complete catalog — categorized by use & finish.</p>
+            <Link to="/products" className="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-900 px-7 py-3.5 font-semibold text-white shadow-lg hover:bg-slate-800 transition">
+              Explore All Products <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
