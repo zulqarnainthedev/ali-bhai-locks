@@ -246,39 +246,45 @@ export function Navbar() {
     const h = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
   }, []);
-  const links = [
-    ["Home", "#home"], ["Products", "#products"], ["About Us", "#about"],
-    ["Manufacturing", "#manufacturing"], ["Supply Network", "#supply"], ["Contact", "#contact"],
+  const links: { label: string; to: string }[] = [
+    { label: "Home", to: "/" },
+    { label: "Products", to: "/products" },
+    { label: "About Us", to: "/about" },
+    { label: "Contact", to: "/#contact" },
   ];
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        <a href="#home" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-amber-500"><Shield className="h-6 w-6" /></div>
           <div>
             <div className="text-base font-bold leading-none text-slate-900">Ali Bhai Hardware</div>
             <div className="text-[10px] font-medium text-amber-600 tracking-widest">SINCE 1995 • ALIGARH</div>
           </div>
-        </a>
+        </Link>
         <nav className="hidden lg:flex items-center gap-7">
-          {links.map(([l, h]) => (
-            <a key={l} href={h} className="text-sm font-medium text-slate-700 hover:text-amber-600 transition">{l}</a>
+          {links.map(l => (
+            l.to.startsWith("/#")
+              ? <a key={l.label} href={l.to} className="text-sm font-medium text-slate-700 hover:text-amber-600 transition">{l.label}</a>
+              : <Link key={l.label} to={l.to} className="text-sm font-medium text-slate-700 hover:text-amber-600 transition" activeProps={{ className: "text-sm font-semibold text-amber-600" }} activeOptions={{ exact: true }}>{l.label}</Link>
           ))}
         </nav>
         <div className="hidden lg:flex items-center gap-3">
           <a href="https://wa.me/917942563317" target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white hover:bg-green-600 transition">
             <MessageCircle className="h-5 w-5" />
           </a>
-          <a href="#contact" className="rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-amber-600/30 hover:bg-amber-700 transition">Get Bulk Quote</a>
+          <a href="/#contact" className="rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-amber-600/30 hover:bg-amber-700 transition">Get Bulk Quote</a>
         </div>
         <button className="lg:hidden" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
       </div>
       {open && (
         <div className="lg:hidden border-t bg-white px-4 py-4">
-          {links.map(([l, h]) => (
-            <a key={l} href={h} onClick={() => setOpen(false)} className="block py-2 text-slate-700">{l}</a>
+          {links.map(l => (
+            l.to.startsWith("/#")
+              ? <a key={l.label} href={l.to} onClick={() => setOpen(false)} className="block py-2 text-slate-700">{l.label}</a>
+              : <Link key={l.label} to={l.to} onClick={() => setOpen(false)} className="block py-2 text-slate-700">{l.label}</Link>
           ))}
-          <a href="#contact" className="mt-2 block rounded-lg bg-amber-600 px-4 py-2.5 text-center text-sm font-semibold text-white">Get Bulk Quote</a>
+          <a href="/#contact" onClick={() => setOpen(false)} className="mt-2 block rounded-lg bg-amber-600 px-4 py-2.5 text-center text-sm font-semibold text-white">Get Bulk Quote</a>
         </div>
       )}
     </header>
