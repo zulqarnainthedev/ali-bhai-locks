@@ -1,17 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { configureStore, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import {
   Shield, Phone, Mail, MapPin, MessageCircle, Menu, X, ShoppingCart, Trash2,
   Factory, Truck, Award, Package, Wrench, IndianRupee, Star, Facebook, Linkedin,
   Youtube, CheckCircle2, ChevronRight, Search, Download, LayoutDashboard,
-  ClipboardList, BarChart3, Network, Lock as LockIcon,
+  ClipboardList, BarChart3, Network, Lock as LockIcon, Building2, Users, Target,
 } from "lucide-react";
-
-export const Route = createFileRoute("/")({
-  component: Page,
-});
 
 /* ---------------- Redux ---------------- */
 type Product = {
