@@ -171,7 +171,7 @@ function useCountUp(target: number, ref: React.RefObject<HTMLElement | null>) {
   return val;
 }
 
-function Toast({ msg, onClose }: { msg: string; onClose: () => void }) {
+export function Toast({ msg, onClose }: { msg: string; onClose: () => void }) {
   useEffect(() => { const t = setTimeout(onClose, 3000); return () => clearTimeout(t); }, [onClose]);
   return (
     <div className="fixed top-24 right-6 z-[100] flex items-center gap-3 rounded-lg bg-amber-600 px-5 py-3 text-white shadow-2xl">
@@ -228,7 +228,7 @@ function ShopShell({ children }: { children: ReactNode }) {
 }
 
 /* ---------------- Sections ---------------- */
-function AnnouncementBar() {
+export function AnnouncementBar() {
   const text = "🏆 ISO 9001:2015 Certified  •  Pan-India Delivery Available  •  Bulk Orders Welcome  •  Gujarat Hub: Fast Dispatch within 24hrs  •  Call: +91 79425 63317";
   return (
     <div className="overflow-hidden bg-amber-600 py-2 text-sm font-medium text-slate-900">
@@ -239,7 +239,7 @@ function AnnouncementBar() {
   );
 }
 
-function Navbar() {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -285,7 +285,7 @@ function Navbar() {
   );
 }
 
-function Hero() {
+export function Hero() {
   return (
     <section id="home" className="hero-pattern relative overflow-hidden">
       <div className="geo-pattern absolute inset-0 opacity-30" />
@@ -346,7 +346,7 @@ function StatItem({ target, suffix, label }: { target: number; suffix: string; l
   );
 }
 
-function Stats() {
+export function Stats() {
   return (
     <section className="bg-amber-500 py-12">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 lg:grid-cols-4 lg:px-8">
@@ -359,7 +359,7 @@ function Stats() {
   );
 }
 
-function DualIdentity() {
+export function DualIdentity() {
   return (
     <section id="manufacturing" className="py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -398,7 +398,7 @@ function DualIdentity() {
   );
 }
 
-function Products() {
+export function Products() {
   const dispatch = useDispatch();
   const filter = useSelector((s: RootState) => s.ui.activeFilter);
   const list = useMemo(() => filter === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === filter), [filter]);
@@ -445,7 +445,7 @@ function Products() {
   );
 }
 
-function ProductModal() {
+export function ProductModal() {
   const dispatch = useDispatch();
   const { isProductModalOpen, selectedProduct: p } = useSelector((s: RootState) => s.ui);
   if (!isProductModalOpen || !p) return null;
@@ -500,7 +500,7 @@ function ProductModal() {
   );
 }
 
-function SupplyNetwork() {
+export function SupplyNetwork() {
   return (
     <section id="supply" className="bg-slate-900 py-20 text-white">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -558,7 +558,7 @@ function SupplyNetwork() {
   );
 }
 
-function WhyUs() {
+export function WhyUs() {
   const items = [
     { icon: Factory, t: "In-House Manufacturing", d: "Full control over quality at our Aligarh unit." },
     { icon: Truck, t: "Gujarat Hub Advantage", d: "Fastest pan-India dispatch from Surat." },
@@ -588,7 +588,7 @@ function WhyUs() {
   );
 }
 
-function Founder() {
+export function Founder() {
   return (
     <section className="bg-slate-50 py-20">
       <div className="mx-auto max-w-4xl px-4 lg:px-8">
@@ -616,7 +616,7 @@ function Founder() {
   );
 }
 
-function Certifications() {
+export function Certifications() {
   const clients = ["Reliance Industries", "L&T", "Tata Projects", "Godrej", "Havells", "Adani Group", "ONGC", "Indian Railways"];
   return (
     <section className="bg-slate-100 py-20">
@@ -649,7 +649,7 @@ function Certifications() {
   );
 }
 
-function Testimonials() {
+export function Testimonials() {
   const t = [
     { n: "Ramesh Patel", c: "Patel Hardware Pvt Ltd", city: "Ahmedabad", q: "Gujarat hub delivery is unmatched. Got 5000 locks in 18 hours." },
     { n: "Suresh Kumar", c: "Kumar Trading Co.", city: "Delhi", q: "Been sourcing from Ali Bhai for 8 years. Quality never drops." },
@@ -684,7 +684,7 @@ function Testimonials() {
   );
 }
 
-function Contact({ onSubmit }: { onSubmit: () => void }) {
+export function Contact({ onSubmit }: { onSubmit: () => void }) {
   const dispatch = useDispatch();
   const [form, setForm] = useState({ name: "", company: "", state: "", phone: "", email: "", category: "", qty: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -761,7 +761,7 @@ function Contact({ onSubmit }: { onSubmit: () => void }) {
   );
 }
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="bg-slate-950 pt-16 pb-6 text-slate-400">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -806,7 +806,7 @@ function Footer() {
   );
 }
 
-function EnquiryDrawer({ onSubmit }: { onSubmit: () => void }) {
+export function EnquiryDrawer({ onSubmit }: { onSubmit: () => void }) {
   const dispatch = useDispatch();
   const { items } = useSelector((s: RootState) => s.enquiry);
   const open = useSelector((s: RootState) => s.ui.isEnquiryDrawerOpen);
@@ -864,7 +864,7 @@ function EnquiryDrawer({ onSubmit }: { onSubmit: () => void }) {
   );
 }
 
-function FloatingButtons() {
+export function FloatingButtons() {
   const dispatch = useDispatch();
   const count = useSelector((s: RootState) => s.enquiry.items.length);
   return (
@@ -882,7 +882,7 @@ function FloatingButtons() {
 }
 
 /* ---------------- Admin ---------------- */
-function AdminGate({ onPass, onClose }: { onPass: () => void; onClose: () => void }) {
+export function AdminGate({ onPass, onClose }: { onPass: () => void; onClose: () => void }) {
   const [pwd, setPwd] = useState("");
   const [err, setErr] = useState("");
   return (
@@ -903,7 +903,7 @@ function AdminGate({ onPass, onClose }: { onPass: () => void; onClose: () => voi
   );
 }
 
-function AdminPanel({ onClose }: { onClose: () => void }) {
+export function AdminPanel({ onClose }: { onClose: () => void }) {
   const [tab, setTab] = useState("dash");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
