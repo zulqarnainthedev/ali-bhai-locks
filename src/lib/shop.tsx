@@ -1154,3 +1154,180 @@ export function AdminPanel({ onClose }: { onClose: () => void }) {
     </div>
   );
 }
+
+/* ---------------- About page extras ---------------- */
+export function AboutHero() {
+  return (
+    <section className="hero-pattern relative overflow-hidden">
+      <div className="geo-pattern absolute inset-0 opacity-30" />
+      <div className="relative mx-auto max-w-7xl px-4 py-20 text-center text-white lg:px-8 lg:py-28">
+        <span className="inline-block rounded-full border border-amber-500/50 bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-400">
+          About Ali Bhai Hardware
+        </span>
+        <h1 className="mx-auto mt-6 max-w-3xl font-display text-5xl font-bold leading-[1.05] lg:text-6xl">
+          Three Decades of <span className="text-amber-500">Trust, Steel & Craft</span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
+          From a single workshop in Aligarh's Jamalpur quarter to a pan-India distribution network — we still hand-test every lock that leaves our floor.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-slate-300">
+          {["Estd. 1995", "Aligarh • UP", "Surat Hub • GJ", "ISO 9001:2015"].map(t => (
+            <span key={t} className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5">{t}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function OfficeGallery() {
+  const shots = [
+    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=70", title: "Aligarh Manufacturing Floor", caption: "50,000+ units produced every month under one roof." },
+    { src: "https://images.unsplash.com/photo-1581090700227-1e8e69be5050?auto=format&fit=crop&w=900&q=70", title: "Quality Testing Bay", caption: "Every batch hand-tested for shackle pull & key precision." },
+    { src: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=900&q=70", title: "Brass Polishing Section", caption: "Traditional Aligarh finishing — the city's signature craft." },
+    { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=70", title: "Head Office, Aligarh", caption: "Where Ali Bhai meets every key wholesale partner personally." },
+    { src: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=900&q=70", title: "Surat Distribution Hub", caption: "24-hour dispatch window for South & West India." },
+    { src: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=900&q=70", title: "Packaging & Despatch", caption: "Tamper-evident sealing, GST invoice, transporter handover." },
+  ];
+  return (
+    <section className="py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Inside Our Operations</span>
+          <h2 className="mt-2 font-display text-4xl font-bold text-slate-900">A Look Inside Ali Bhai Hardware</h2>
+          <p className="mt-2 text-slate-600">From the foundry floor in Aligarh to the dispatch dock in Surat — full transparency.</p>
+        </div>
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {shots.map(s => (
+            <figure key={s.title} className="group overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-xl">
+              <div className="overflow-hidden">
+                <img src={s.src} alt={s.title} className="h-56 w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+              <figcaption className="p-5">
+                <h3 className="text-base font-bold text-slate-900">{s.title}</h3>
+                <p className="mt-1 text-sm text-slate-600">{s.caption}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CompanyStory() {
+  const milestones = [
+    { y: "1995", t: "Founded in Aligarh", d: "Ali Bhai sets up a single-room workshop in Jamalpur." },
+    { y: "2004", t: "First BIS Mark", d: "Padlock range certified by Bureau of Indian Standards." },
+    { y: "2012", t: "Surat Hub Launched", d: "Gujarat distribution hub opens for South & West India." },
+    { y: "2018", t: "ISO 9001:2015", d: "Full QMS certification across manufacturing & dispatch." },
+    { y: "2025", t: "200+ Bulk Clients", d: "Trusted by hardware chains, PSUs & industrial buyers." },
+  ];
+  return (
+    <section className="bg-slate-50 py-20">
+      <div className="mx-auto max-w-5xl px-4 lg:px-8">
+        <div className="text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Our Journey</span>
+          <h2 className="mt-2 font-display text-4xl font-bold text-slate-900">Built Lock by Lock, Year by Year</h2>
+        </div>
+        <ol className="relative mt-12 border-l-2 border-amber-500/30 pl-8">
+          {milestones.map(m => (
+            <li key={m.y} className="relative mb-8">
+              <span className="absolute -left-[42px] flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-xs font-bold text-white shadow-lg">{m.y.slice(2)}</span>
+              <div className="rounded-xl bg-white p-5 shadow-sm">
+                <div className="text-sm font-bold text-amber-600">{m.y}</div>
+                <div className="mt-1 font-bold text-slate-900">{m.t}</div>
+                <p className="mt-1 text-sm text-slate-600">{m.d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+export function AligarhMap() {
+  const mapSrc = "https://www.google.com/maps?q=Jamalpur,Aligarh,Uttar+Pradesh,India&output=embed";
+  const directionsHref = "https://www.google.com/maps/dir/?api=1&destination=Jamalpur,Aligarh,Uttar+Pradesh,India";
+  return (
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Visit Our Factory</span>
+          <h2 className="mt-2 font-display text-4xl font-bold text-slate-900">Manufacturing Unit — Jamalpur, Aligarh</h2>
+          <p className="mt-2 text-slate-600">You're welcome to walk the floor. Bring your buyers, audit our process — we keep the gates open.</p>
+        </div>
+        <div className="mt-12 grid gap-8 lg:grid-cols-5">
+          <div className="lg:col-span-3">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-lg">
+              <iframe
+                title="Ali Bhai Hardware — Jamalpur, Aligarh"
+                src={mapSrc}
+                className="h-[420px] w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+          <div className="space-y-4 lg:col-span-2">
+            <div className="rounded-2xl bg-slate-900 p-6 text-white">
+              <div className="flex items-center gap-3">
+                <Factory className="h-7 w-7 text-amber-500" />
+                <div>
+                  <div className="font-bold text-lg">Manufacturing HQ</div>
+                  <div className="text-sm text-amber-400">Jamalpur, Aligarh — UP</div>
+                </div>
+              </div>
+              <div className="mt-4 space-y-3 text-sm text-slate-300">
+                <div className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-amber-500 flex-shrink-0" /> Mumta Lodge, Ada Colony, Shahjamal, Jamalpur, Aligarh – 202001, Uttar Pradesh, India</div>
+                <div className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-amber-500 flex-shrink-0" /> +91 79425 63317</div>
+                <div className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-amber-500 flex-shrink-0" /> info@alibhaihardware.com</div>
+                <div className="flex items-start gap-2"><Building2 className="mt-0.5 h-4 w-4 text-amber-500 flex-shrink-0" /> Mon–Sat • 9:30 AM – 7:00 PM</div>
+              </div>
+              <a href={directionsHref} target="_blank" rel="noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-3 text-sm font-semibold text-white hover:bg-amber-700 transition">
+                <MapPin className="h-4 w-4" /> Get Directions
+              </a>
+            </div>
+            <div className="rounded-2xl border border-amber-500/30 bg-amber-50 p-5 text-sm text-slate-800">
+              <div className="font-bold text-slate-900">Why visit?</div>
+              <ul className="mt-3 space-y-2">
+                <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-amber-600" /> See the lock you'll buy actually being made.</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-amber-600" /> Meet Ali Bhai in person — no middlemen.</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-amber-600" /> Audit our QA process before placing bulk orders.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function AboutValues() {
+  const values = [
+    { icon: Target, t: "Honest Pricing", d: "Factory-direct. No agents, no markup layers." },
+    { icon: Users, t: "Relationships First", d: "70% of clients have ordered for 5+ years." },
+    { icon: Shield, t: "Quality is Personal", d: "Every batch is signed off by our QA head." },
+  ];
+  return (
+    <section className="py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-600">What We Stand For</span>
+          <h2 className="mt-2 font-display text-4xl font-bold text-slate-900">Our Promise to Every Buyer</h2>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {values.map(({ icon: Icon, t, d }) => (
+            <div key={t} className="rounded-2xl border border-slate-200 bg-white p-7 transition hover:border-amber-500 hover:shadow-lg">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600 text-white"><Icon className="h-6 w-6" /></div>
+              <h3 className="mt-5 text-lg font-bold text-slate-900">{t}</h3>
+              <p className="mt-2 text-sm text-slate-600">{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
