@@ -307,9 +307,9 @@ export function Hero() {
             From our factory in Aligarh to your doorstep anywhere in India — premium padlocks, safety locks & hardware since 1995. Gujarat distribution hub ensures 24hr pan-India dispatch.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#products" className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-6 py-3.5 font-semibold text-white shadow-xl shadow-amber-600/30 hover:bg-amber-700 transition">
+            <Link to="/products" className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-6 py-3.5 font-semibold text-white shadow-xl shadow-amber-600/30 hover:bg-amber-700 transition">
               Explore Products <ChevronRight className="h-4 w-4" />
-            </a>
+            </Link>
             <a href="https://wa.me/917942563317" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur hover:bg-white/20 transition">
               <MessageCircle className="h-4 w-4" /> WhatsApp Ali Bhai
             </a>
