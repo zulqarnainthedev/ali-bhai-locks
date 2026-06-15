@@ -180,16 +180,21 @@ function Toast({ msg, onClose }: { msg: string; onClose: () => void }) {
   );
 }
 
-/* ---------------- App ---------------- */
-function Page() {
+/* ---------------- App Shell ---------------- */
+import { createContext, useContext } from "react";
+type ToastCtx = { showToast: (msg: string) => void };
+const ToastContext = createContext<ToastCtx>({ showToast: () => {} });
+export const useToast = () => useContext(ToastContext);
+
+export function ShopProvider({ children }: { children: ReactNode }) {
   return (
     <Provider store={store}>
-      <AppShell />
+      <ShopShell>{children}</ShopShell>
     </Provider>
   );
 }
 
-function AppShell() {
+function ShopShell({ children }: { children: ReactNode }) {
   const [toast, setToast] = useState("");
   const [adminGate, setAdminGate] = useState(false);
   const [adminOpen, setAdminOpen] = useState(false);
@@ -205,27 +210,20 @@ function AppShell() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <AnnouncementBar />
-      <Navbar />
-      <Hero />
-      <Stats />
-      <DualIdentity />
-      <Products />
-      <SupplyNetwork />
-      <WhyUs />
-      <Founder />
-      <Certifications />
-      <Testimonials />
-      <Contact onSubmit={() => setToast("Enquiry sent! We'll contact you within 24 hours.")} />
-      <Footer />
-      <ProductModal />
-      <EnquiryDrawer onSubmit={() => setToast("Enquiry sent via WhatsApp!")} />
-      <FloatingButtons />
-      {toast && <Toast msg={toast} onClose={() => setToast("")} />}
-      {adminGate && <AdminGate onPass={() => { setAdminGate(false); setAdminOpen(true); }} onClose={() => setAdminGate(false)} />}
-      {adminOpen && <AdminPanel onClose={() => setAdminOpen(false)} />}
-    </div>
+    <ToastContext.Provider value={{ showToast: setToast }}>
+      <div className="min-h-screen bg-white text-slate-900">
+        <AnnouncementBar />
+        <Navbar />
+        {children}
+        <Footer />
+        <ProductModal />
+        <EnquiryDrawer onSubmit={() => setToast("Enquiry sent via WhatsApp!")} />
+        <FloatingButtons />
+        {toast && <Toast msg={toast} onClose={() => setToast("")} />}
+        {adminGate && <AdminGate onPass={() => { setAdminGate(false); setAdminOpen(true); }} onClose={() => setAdminGate(false)} />}
+        {adminOpen && <AdminPanel onClose={() => setAdminOpen(false)} />}
+      </div>
+    </ToastContext.Provider>
   );
 }
 
