@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Products } from "@/lib/shop";
-import { useMemo } from "react";
+
 
 export const Route = createFileRoute("/products/safety-disc-locks")({
   head: () => ({
