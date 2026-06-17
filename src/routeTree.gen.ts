@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsSafetyDiscLocksRouteImport } from './routes/products.safety-disc-locks'
+import { Route as ProductsPadlocksRouteImport } from './routes/products.padlocks'
+import { Route as ProductsHardwareRouteImport } from './routes/products.hardware'
 
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
@@ -28,35 +31,78 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsSafetyDiscLocksRoute = ProductsSafetyDiscLocksRouteImport.update({
+  id: '/safety-disc-locks',
+  path: '/safety-disc-locks',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const ProductsPadlocksRoute = ProductsPadlocksRouteImport.update({
+  id: '/padlocks',
+  path: '/padlocks',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const ProductsHardwareRoute = ProductsHardwareRouteImport.update({
+  id: '/hardware',
+  path: '/hardware',
+  getParentRoute: () => ProductsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/products': typeof ProductsRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/products/hardware': typeof ProductsHardwareRoute
+  '/products/padlocks': typeof ProductsPadlocksRoute
+  '/products/safety-disc-locks': typeof ProductsSafetyDiscLocksRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/products': typeof ProductsRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/products/hardware': typeof ProductsHardwareRoute
+  '/products/padlocks': typeof ProductsPadlocksRoute
+  '/products/safety-disc-locks': typeof ProductsSafetyDiscLocksRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/products': typeof ProductsRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/products/hardware': typeof ProductsHardwareRoute
+  '/products/padlocks': typeof ProductsPadlocksRoute
+  '/products/safety-disc-locks': typeof ProductsSafetyDiscLocksRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/products'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/products'
+    | '/products/hardware'
+    | '/products/padlocks'
+    | '/products/safety-disc-locks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/products'
-  id: '__root__' | '/' | '/about' | '/products'
+  to:
+    | '/'
+    | '/about'
+    | '/products'
+    | '/products/hardware'
+    | '/products/padlocks'
+    | '/products/safety-disc-locks'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/products'
+    | '/products/hardware'
+    | '/products/padlocks'
+    | '/products/safety-disc-locks'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ProductsRoute: typeof ProductsRoute
+  ProductsRoute: typeof ProductsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -82,24 +128,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/safety-disc-locks': {
+      id: '/products/safety-disc-locks'
+      path: '/safety-disc-locks'
+      fullPath: '/products/safety-disc-locks'
+      preLoaderRoute: typeof ProductsSafetyDiscLocksRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/products/padlocks': {
+      id: '/products/padlocks'
+      path: '/padlocks'
+      fullPath: '/products/padlocks'
+      preLoaderRoute: typeof ProductsPadlocksRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/products/hardware': {
+      id: '/products/hardware'
+      path: '/hardware'
+      fullPath: '/products/hardware'
+      preLoaderRoute: typeof ProductsHardwareRouteImport
+      parentRoute: typeof ProductsRoute
+    }
   }
 }
+
+interface ProductsRouteChildren {
+  ProductsHardwareRoute: typeof ProductsHardwareRoute
+  ProductsPadlocksRoute: typeof ProductsPadlocksRoute
+  ProductsSafetyDiscLocksRoute: typeof ProductsSafetyDiscLocksRoute
+}
+
+const ProductsRouteChildren: ProductsRouteChildren = {
+  ProductsHardwareRoute: ProductsHardwareRoute,
+  ProductsPadlocksRoute: ProductsPadlocksRoute,
+  ProductsSafetyDiscLocksRoute: ProductsSafetyDiscLocksRoute,
+}
+
+const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
+  ProductsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ProductsRoute: ProductsRoute,
+  ProductsRoute: ProductsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

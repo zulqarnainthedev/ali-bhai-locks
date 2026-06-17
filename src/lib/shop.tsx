@@ -411,6 +411,7 @@ export function Products({
   heading = "Our Product Range",
   eyebrow = "Catalog",
   subhead = "Manufactured in Aligarh • Supplied across India",
+  category,
 }: {
   limit?: number;
   showFilters?: boolean;
@@ -418,12 +419,14 @@ export function Products({
   heading?: string;
   eyebrow?: string;
   subhead?: string;
+  category?: string;
 } = {}) {
   const dispatch = useDispatch();
   const filter = useSelector((s: RootState) => s.ui.activeFilter);
+  const effective = category ?? filter;
   const fullList = useMemo(
-    () => (filter === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === filter)),
-    [filter]
+    () => (effective === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === effective)),
+    [effective]
   );
   const list = limit ? fullList.slice(0, limit) : fullList;
   return (
