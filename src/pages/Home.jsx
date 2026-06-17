@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Factory, Truck, Award } from "lucide-react";
-import { PRODUCTS, CATEGORIES } from "../../data/products.js";
+import { PRODUCTS, CATEGORIES } from "../data/products.js";
 import ProductCard from "../components/common/ProductCard.jsx";
 import ProductDetailsModal from "../components/common/ProductDetailsModal.jsx";
 
