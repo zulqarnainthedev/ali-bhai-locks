@@ -111,6 +111,47 @@ export default function About() {
               style={{ border: 0 }}
             />
           </div>
+
+          <div className="mt-12 text-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Distribution Hub</span>
+            <h2 className="mt-2 font-display text-3xl font-bold">Gujarat Office — Porbandar</h2>
+            <p className="mt-2 text-slate-600">Our pan-India dispatch hub on the coast of Gujarat.</p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
+            <iframe
+              title="Ali Bhai Hardware — Porbandar, Gujarat"
+              src="https://www.google.com/maps?q=Porbandar,+Gujarat&output=embed"
+              width="100%"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ border: 0 }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Owner section */}
+      <section className="bg-slate-50 py-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 md:grid-cols-2 lg:px-8">
+          <img
+            src="https://source.unsplash.com/600x700/?indian,businessman,portrait"
+            alt="Ali Bhai — Founder"
+            className="mx-auto h-[420px] w-full max-w-md rounded-2xl object-cover shadow-xl ring-1 ring-slate-200"
+          />
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Meet the Founder</span>
+            <h2 className="mt-2 font-display text-3xl font-bold">Ali Bhai</h2>
+            <p className="mt-1 text-sm font-semibold text-slate-500">Founder & Master Craftsman • Since 1995</p>
+            <p className="mt-4 text-slate-700">
+              "When we started in Jamalpur thirty years ago, the goal was simple — make locks that families and businesses
+              can trust for decades. Today, with our Porbandar hub, we proudly serve every state in India while staying
+              true to the craftsmanship that built our name."
+            </p>
+            <p className="mt-3 text-slate-700">
+              Every product carries the same quality promise — built in Aligarh, delivered with care.
+            </p>
+          </div>
         </div>
       </section>
     </>
