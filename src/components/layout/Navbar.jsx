@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Shield, Menu, X, ShoppingCart } from "lucide-react";
+import { Shield, Menu, X, ShoppingCart, User } from "lucide-react";
 import { toggleDrawer } from "../../store/store.js";
 import { CATEGORIES } from "../../data/products.js";
 
