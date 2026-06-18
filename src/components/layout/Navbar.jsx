@@ -37,9 +37,16 @@ export default function Navbar() {
             </NavLink>
           ))}
           <NavLink to="/about" className={linkCls}>About</NavLink>
+          <NavLink to="/my-orders" className={linkCls}>My Orders</NavLink>
         </nav>
 
         <div className="flex items-center gap-2">
+          <NavLink
+            to="/login"
+            className="hidden sm:inline-flex h-10 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+          >
+            <User className="h-4 w-4" /> Login
+          </NavLink>
           <button
             onClick={() => dispatch(toggleDrawer())}
             className="relative flex h-10 items-center gap-2 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
