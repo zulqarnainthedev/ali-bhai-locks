@@ -124,6 +124,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Enquiry */}
+      <section className="bg-slate-900 py-16 text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:px-8">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-300">Bulk Enquiry</span>
+            <h2 className="mt-2 font-display text-3xl font-bold">Request a wholesale quote</h2>
+            <p className="mt-3 max-w-md text-slate-300">
+              Tell us what you need. Our team responds within 24 hours with pricing, MOQ and dispatch timeline (default 6 working days).
+            </p>
+            <ul className="mt-6 space-y-2 text-sm text-slate-300">
+              <li>• Pan-India dispatch from Surat hub</li>
+              <li>• OEM / custom branding available</li>
+              <li>• 30+ years manufacturing experience</li>
+            </ul>
+          </div>
+          <EnquiryForm />
+        </div>
+      </section>
+
       {selected && <ProductDetailsModal product={selected} onClose={() => setSelected(null)} />}
     </>
   );
