@@ -4,6 +4,7 @@ import { ArrowRight, Factory, Truck, Award } from "lucide-react";
 import { PRODUCTS, CATEGORIES } from "../data/products.js";
 import ProductCard from "../components/common/ProductCard.jsx";
 import ProductDetailsModal from "../components/common/ProductDetailsModal.jsx";
+import EnquiryForm from "../components/common/EnquiryForm.jsx";
 
 function useTitle(t, d) {
   useEffect(() => {
