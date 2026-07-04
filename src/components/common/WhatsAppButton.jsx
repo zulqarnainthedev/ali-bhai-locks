@@ -1,18 +1,22 @@
-import { MessageCircle } from "lucide-react";
+import whatsapp from "../../assets/whatsapp.png";
 
-export default function WhatsAppButton({ phone = "919999999999" }) {
-  const href = `https://wa.me/${phone}?text=${encodeURIComponent(
-    "Hi Ali Bhai Hardware, I'd like a bulk enquiry."
-  )}`;
+export default function WhatsAppButton({
+  phone = "917505279565", // Country code (91 for India) included, no '+' or leading zero
+  message = "Hi Ali Bhai Hardware, I'd like a bulk enquiry.",
+}) {
+  const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
   return (
-    <a
+   <div className="animate-bounc">
+     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
-      className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl hover:bg-green-600"
-      aria-label="WhatsApp"
+      rel="noopener noreferrer"
+      aria-label="Chat on WhatsApp"
+      className="animate-bounce fixed bottom-6 right-6 z-40 flex  items-center justify-center rounded-full bg-white shadow-2xl transition-transform hover:scale-105"
     >
-      <MessageCircle className="h-6 w-6" />
+      <img className="size-16 " src={whatsapp} alt="WhatsApp chat icon" />
     </a>
+   </div>
   );
 }
