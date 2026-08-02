@@ -1,11 +1,16 @@
 import { useDispatch } from "react-redux";
 import { addToEnquiry } from "../../store/store.js";
 import { useToast } from "../../context/ToastContext.jsx";
-import { IndianRupee } from "lucide-react";
+import { Phone, ImageOff } from "lucide-react";
+
+const FALLBACK_IMAGE = "/placeholder-product.png"; // apne project ke hisaab se path adjust kar lijiye
 
 export default function ProductCard({ product, onOpen }) {
   const dispatch = useDispatch();
   const { showToast } = useToast();
+
+  const hasDiscount = product.newPrice != null && product.newPrice < product.price;
+  const displayImage = product.image?.trim() ? product.image : null;
 
   const handleAdd = (e) => {
     e.stopPropagation();
@@ -13,8 +18,8 @@ export default function ProductCard({ product, onOpen }) {
       addToEnquiry({
         id: product.id,
         name: product.name,
-        image: product.image,
-        startingPrice: product.startingPrice,
+        image: displayImage,
+        price: hasDiscount ? product.newPrice : product.price,
       })
     );
     showToast(`${product.name} added to enquiry`);
@@ -25,30 +30,42 @@ export default function ProductCard({ product, onOpen }) {
       onClick={() => onOpen(product)}
       className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 transition hover:shadow-xl"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="h-full w-full object-cover transition group-hover:scale-105"
-        />
-        <span className="absolute left-3 top-3 rounded-full bg-slate-900/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400">
-          {product.qualityGrade}
-        </span>
-      </div>
-      <div className="p-5">
-        <h3 className="text-lg font-bold text-slate-900">{product.name}</h3>
-        <p className="mt-1 line-clamp-2 text-sm text-slate-600">{product.shortDescription}</p>
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-center text-amber-600">
-            <span className="text-xs text-slate-500 mr-1">Starting</span>
-            <IndianRupee className="h-4 w-4" />
-            <span className="text-lg font-bold">{product.startingPrice}</span>
+      <div className="relative aspect-[1] overflow-hidden bg-slate-100">
+        {displayImage ? (
+          <img
+            src={displayImage}
+            alt={product.name}
+            className="h-full w-full object-cover transition group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-slate-300">
+            <ImageOff className="h-10 w-10" />
           </div>
+        )}
+
+        {product.category?.name && (
+          <span className="absolute left-3 top-3 rounded-full bg-slate-900/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400">
+            {product.category.name}
+          </span>
+        )}
+
+        {hasDiscount && (
+          <span className="absolute right-3 top-3 rounded-full bg-emerald-600 px-2 py-1 text-[10px] font-bold text-white">
+            Sale
+          </span>
+        )}
+      </div>
+
+      <div className="p-2">
+        <h3 className="font-semibold text-slate-900">{product.name}</h3>
+        <p className="line-clamp-2 text-xs text-slate-600">{product.shortDescription}</p>
+
+        <div className="mt-1 flex items-center justify-end">
           <button
             onClick={handleAdd}
-            className="rounded-lg bg-amber-600 px-3 py-2 text-xs font-bold text-white hover:bg-amber-700"
+            className="inline-flex items-center gap-1 rounded-lg bg-amber-600 px-2 py-2 text-xs font-bold text-white hover:bg-amber-700"
           >
-            + Enquiry
+            <Phone className="h-3.5 w-3.5" /> Get best price
           </button>
         </div>
       </div>

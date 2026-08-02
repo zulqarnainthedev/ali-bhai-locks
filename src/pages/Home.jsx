@@ -6,6 +6,7 @@ import ProductCard from "../components/common/ProductCard.jsx";
 import ProductDetailsModal from "../components/common/ProductDetailsModal.jsx";
 import EnquiryForm from "../components/common/EnquiryForm.jsx";
 import owner from "../assets/founder.jpeg";
+import ProductFeatures from "../components/common/ProductFeatured.jsx";
 
 function useTitle(t, d) {
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function Home() {
   );
 
   const [selected, setSelected] = useState(null);
-  const featured = PRODUCTS.slice(0, 6);
+ const featured = PRODUCTS.filter((_, index) => index !== 3).slice(0,4);
 
   return (
     <>
@@ -61,7 +62,7 @@ export default function Home() {
 
               {/* Headline */}
               <h1 className="text-4xl pt-9 font-extrabold leading-tight md:text-5xl lg:text-6xl tracking-tight">
-                Locks Built in{" "}
+                Locks Manufactured in{" "}
                 <span className="text-amber-400">Aligarh.</span>
                 <br />
                 Trusted Across{" "}
@@ -82,10 +83,10 @@ export default function Home() {
 
               {/* Trust badges row */}
               <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-                <div className="flex items-center gap-1.5">
+                {/* <div className="flex items-center gap-1.5">
                   <Shield className="h-4 w-4 text-amber-400 shrink-0" />
                   <span>ISI Certified</span>
-                </div>
+                </div> */}
                 <div className="flex items-center gap-1.5">
                   <Star className="h-4 w-4 text-amber-400 shrink-0" />
                   <span>4.8★ Rated</span>
@@ -134,7 +135,7 @@ export default function Home() {
                     <div>
                       <p className="text-xs text-slate-300">Delivery & support</p>
                       <p className="text-sm font-bold text-white">
-                        Free delivery + Cash on Delivery (COD)
+                        Free delivery to your door step.
                       </p>
                       <p className="mt-2 text-xs text-slate-300">
                         Customer support within 30 minutes during business hours.
@@ -151,7 +152,7 @@ export default function Home() {
                   <p className="text-xs text-slate-400 mt-0.5">Years Experience</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-extrabold text-white">500+</p>
+                  <p className="text-2xl font-extrabold text-white">120+</p>
                   <p className="text-xs text-slate-400 mt-0.5">Products</p>
                 </div>
                 <div>
@@ -196,9 +197,9 @@ export default function Home() {
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 sm:grid-cols-3 lg:px-8">
           {[
-            { Icon: Factory, t: "Aligarh Manufacturing", d: "In-house production, BIS-certified processes." },
-            { Icon: Truck, t: "Pan-India Supply", d: "24-hr dispatch from Surat (Gujarat) hub." },
-            { Icon: Award, t: "Trusted Since 2005", d: "30+ years serving hardware distributors." },
+            { Icon: Factory, t: "Aligarh Manufacturing", d: "In-house production, Quality testing processes" },
+            { Icon: Truck, t: "Pan-India Supply", d: "24-hr dispatch from Surat & Porbandar (Gujarat) hub." },
+            { Icon: Award, t: "Trusted Since 2005", d: "20+ years serving hardware distributors." },
           ].map(({ Icon, t, d }) => (
             <div key={t} className="flex items-start gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100 text-amber-700">
@@ -220,7 +221,7 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Shop by Category</span>
             <h2 className="mt-2 font-display text-3xl font-bold text-slate-900">Our Product Categories</h2>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3 grid-cols-">
             {CATEGORIES.map((c) => (
               <Link
                 key={c.slug}
@@ -239,25 +240,26 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="bg-white py-16">
+      {/* <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Featured Range</span>
             <h2 className="mt-2 font-display text-3xl font-bold text-slate-900">Some of Our Best-Sellers</h2>
             <p className="mt-2 text-slate-600">A peek at the catalog — explore the full range for specs & variants.</p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {featured.map((p) => (
               <ProductCard key={p.id} product={p} onOpen={setSelected} />
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link to="/products" className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-6 py-3 text-sm font-bold text-white hover:bg-slate-800">
-              Explore All Products <ArrowRight className="h-4 w-4" />
+            <Link to="/products/padlocks" className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-6 py-3 text-sm font-bold text-white hover:bg-slate-800">
+              Explore All Padlocks <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
+    { featured&& <ProductFeatures features={featured} setSelected={setSelected} catagory="Padlocks"/> }
 
       {/* Reviews */}
       <section className="bg-slate-50 py-16">
@@ -385,10 +387,49 @@ export default function Home() {
             <ul className="mt-6 space-y-2 text-sm text-slate-300">
               <li>• Pan-India dispatch from Surat hub</li>
               <li>• OEM / custom branding available</li>
-              <li>• 30+ years manufacturing experience</li>
+              <li>• 15+ years manufacturing experience</li>
             </ul>
           </div>
           <EnquiryForm />
+        </div>
+      </section>
+
+{/* address section  */}
+<section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="text-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Find Us</span>
+            <h2 className="mt-2 font-display text-3xl font-bold">Manufacturing Unit — Jamalpur, Aligarh</h2>
+            <p className="mt-2 text-slate-600">Visit our factory in the heart of India's lock-making city.</p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
+            <iframe
+              title="Ali Bhai Hardware — Jamalpur, Aligarh"
+              src="https://www.google.com/maps?q=Jamalpur,+Aligarh,+Uttar+Pradesh&output=embed"
+              width="100%"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ border: 0 }}
+            />
+          </div>
+
+          <div className="mt-12 text-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Distribution Hub</span>
+            <h2 className="mt-2 font-display text-3xl font-bold">Gujarat Office — Porbandar</h2>
+            <p className="mt-2 text-slate-600">Our pan-India dispatch hub on the coast of Gujarat.</p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200">
+            <iframe
+              title="Ali Bhai Hardware — Porbandar, Gujarat"
+              src="https://www.google.com/maps?q=Porbandar,+Gujarat&output=embed"
+              width="100%"
+              height="450"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ border: 0 }}
+            />
+          </div>
         </div>
       </section>
 

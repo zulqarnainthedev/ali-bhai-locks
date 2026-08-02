@@ -1,254 +1,194 @@
-// Centralized product catalog. Each product belongs to a category and has variants.
-// Category slugs map to /products/:categorySlug routes.;
+// parda breaket 
+import breaket from "../assets/locks/pardabraket/pardabreaket.jpg";
 
-// Local product/lock images (replaces external placeholder images)
-import inayaImg from "../assets/locks/inaya.png";
-import inaya65Img from "../assets/locks/inaya65mm.png";
-import inaya75Img from "../assets/locks/inaya75mm.png";
-import lathi74Img from "../assets/locks/lathi74mm.png";
-import lathiyuvaImg from "../assets/locks/lathiyuva.png";
-import remexjeetImg from "../assets/locks/remexjeet.png";
-import taker65Img from "../assets/locks/taker65mm.png";
-import timepremiumImg from "../assets/locks/timepremium.png";
+// multi and cupoard lcoks
+import whitemetalmultig from "../assets/locks/multilocks/orelmultiwhitemetallever.png";
+import whitemetalmultii from "../assets/locks/multilocks/orelmultiwhitemetalleverlk2.png";
+import multi from "../assets/locks/multilocks/cellomultibluelever.png";
+import ultraeurobluecupboardi from "../assets/locks/multilocks/ultraeurobluecupboard.png";
+import ultraeurobluecupboardg from "../assets/locks/multilocks/ultracupboardblueeurss.png";
+import orelultrasquarecupssi from "../assets/locks/multilocks/orelultrasquarecupss.png";
+import orelcupultrasseuroi from "../assets/locks/multilocks/orelcupultrasseuro.png";
+import multisqrlevrslvg from "../assets/locks/multilocks/multisqrlevrslv.png";
+import multisqrlevrslvi from "../assets/locks/multilocks/multisqrleverslv.png";
+import levercupboardsseur from "../assets/locks/multilocks/levercupboardsseur.png";
+import euroultrassjordancup from "../assets/locks/multilocks/euroultrassjordancup.png";
+import aldropeuropaslv from "../assets/locks/multilocks/aldropeuropaslv.png";
+
+
+
+
+// aldrop/
+
+import aldrop from "../assets/locks/aldrops/aldrop.webp"
+import aldropkit from "../assets/locks/aldrops/aldropset.webp";
+import aldropkitc from "../assets/locks/aldrops/aldropsetw.jpeg";
+
+// padlocks
+import inayatimepremium68mmlki from "../assets/locks/padlocks/inayapremiuim68mmlk.png";
+import inayatimepremium68mmlg from "../assets/locks/padlocks/timepremium68mm.png";
+import inayaslvi from "../assets/locks/padlocks/inayaslv.png";
+import inayaactiveslv5363 from "../assets/locks/padlocks/inayaactiveslv5363.png";
+import inaya75mm from "../assets/locks/padlocks/inaya75mm.png";
+import lathi74mmlkci from "../assets/locks/padlocks/lathi74mmlkc.png";
+import lathi74mmbcg from "../assets/locks/padlocks/lathi74mmbc.png";
+import lathi74mmg from "../assets/locks/padlocks/lathi74mm.png";
+import remexjeet86mmlkci from "../assets/locks/padlocks/remexjeet86mmlkc.png";
+import remexjeetsetcg from "../assets/locks/padlocks/remexjeetsetc.png";
+
+
+
+
+
+import doorkongalsg from "../assets/locks/padlocks/doorkonshakti65mmrooundc.png";
+import doorkonimgi from "../assets/locks/padlocks/doorkonshaktiround64mmlockc.png";
+import doorkongalb from "../assets/locks/padlocks/doorkonshaktiround65mmboxc.png";
+import doorkongalsn from "../assets/locks/padlocks/doorkonshaktiround65mmsetc.png";
+import harrisonboxg from "../assets/locks/padlocks/harrisonboxc.png";
+import harrisonsg from "../assets/locks/padlocks/harrisonc.png";
+import harrisonlocki from "../assets/locks/padlocks/harrisonlockc.png";
+import inaya25sg from "../assets/locks/padlocks/inaya25mmc.png";
+import inaya25li from "../assets/locks/padlocks/inaya25mmlockc.png";
+import inayablacklockkeylkg from "../assets/locks/padlocks/inayablacklockkeyc.png";
+import inayablacksetsi from "../assets/locks/padlocks/inayablacksetc.png";
+import inayacaptain52setcmmi from "../assets/locks/padlocks/inayacaptain52setcmm.png";
+import inayaclassic65mmlockkeyi from "../assets/locks/padlocks/inayaclassic65mmlockkey.png";
+import inayaclassic65mmsetg from "../assets/locks/padlocks/inayaclassic65mmsetc (2).png";
+// import padlock15 from "../assets/locks/padlocks/inayaclassic65mmsetc.png";
+import inayaclassic75mmroundcatgc from "../assets/locks/padlocks/inayaclassic75mmroundcatc.png";
+import inayaclassic75mmlockandlockkeycog from "../assets/locks/padlocks/inayaclassic75mmlockandlockkey.png";
+import inayaclassic75mmlockandlockkeyg from "../assets/locks/padlocks/inayaclassic75mmlockandlockkeyc.png";
+import inayaclassic75mmroundgli from "../assets/locks/padlocks/inayaclassic75mmroundc.png";
+import lathiyuva70mm2sidekeybackg from "../assets/locks/padlocks/lathiyuva70mm2sidekeybackc.png";
+import lathiyuva70mmbox2sidekyg from "../assets/locks/padlocks/lathiyuva70mmbox2sidekyc.png";
+import lathiyuva70mmlockkey2sidekeyli from "../assets/locks/padlocks/lathiyuva70mmlockkey2sidekeyc.png";
+import lthiyuva70mm2sidekeylockfrontg from "../assets/locks/padlocks/lthiyuva70mm2sidekeylockfrontc.png";
+import shaktidoorkon65mmcog from "../assets/locks/padlocks/shaktidoorkon65mmc.png";
+import takerpushlockc65mmlki from "../assets/locks/padlocks/takerpushlockc65mmc.png";
+import takershaktipush64mmsetsg from "../assets/locks/padlocks/takershaktipush64mmsetc.png";
+import takershaktipush65mmg from "../assets/locks/padlocks/takershaktipush65mmc.png";
+import takershaktipushbox65mmg from "../assets/locks/padlocks/takershaktipushbox65mmc.png";
 
 export const CATEGORIES = [
   { slug: "padlocks", name: "Padlocks", description: "Brass, iron, SS & specialty padlocks." },
+  
   {
-    slug: "safety-disc-locks",
-    name: "Safety Disc Locks",
+    slug: "multi-purpose-locks",
+    name: "Multi Purpose and drawer Locks",
     description: "Industrial safety & disc locks.",
   },
   {
-    slug: "hardware",
-    name: "Hardware",
-    description: "Shutter locks, tower bolts, cupboard locks.",
+    slug: "aldrop",
+    name: "Alrop-Aldrop kit",
+    description: "Heavy aldrop for best safety",
+  },
+  {
+    slug: "Breaket",
+    name: "Parda breaket",
+    description: "All type parda barackets with large amount of designs",
   },
 ];
 
 const img = (q) => `https://source.unsplash.com/800x600/?${encodeURIComponent(q)}`;
 
+
 export const PRODUCTS = [
   {
     id: 1,
+    gallery: [doorkongalsg, doorkongalsn, doorkongalb],
     name: "Iron Padlock",
     categorySlug: "padlocks",
-    startingPrice: 49,
-    shortDescription: "Industrial-grade iron padlock with double-locking mechanism.",
-    image: inayaImg,
+    quality: "best",
+    status: "active",
+    // startingPrice: 49,
+    price: 49,
+    // shortDescription: "Industrial-grade iron padlock with double-locking mechanism.",
+    image: doorkonimgi,
     material: "Iron",
-    qualityGrade: "Heavy Duty",
+    // qualityGrade: "Heavy Duty",
     description:
       "Heavy-duty mild steel iron padlocks built in our Aligarh facility. Hardened shackle, 7-lever mechanism, chrome finish. Trusted by hardware distributors across India for shops, warehouses & domestic use.",
+    moq: "450 Piece",
+    Weight: "200 g",
+    size: "65 mm",
+    keys: 3,
     variants: [
       {
         size: "50 mm",
         price: 49,
-        moq: "450 Piece",
-        image: inaya65Img,
-        gallery: [img("iron padlock"), img("padlock chrome"), img("padlock key")],
-        specs: {
-          "Lock Size": "50 mm",
-          "Body Material": "Mild Steel",
-          Material: "Iron",
-          "Shackle Thickness": "8 mm",
-          Levers: "7 Levers",
-          Weight: "200 g",
-          "Number of Keys": "3 Keys",
-          "Shackle Type": "Long",
-          "Finish Type": "Chrome",
-        },
-      },
-      {
-        size: "60 mm",
-        price: 65,
-        moq: "400 Piece",
-        image: taker65Img,
-        gallery: [img("padlock iron"), img("padlock industrial"), img("padlock keys")],
-        specs: {
-          "Lock Size": "60 mm",
-          "Body Material": "Mild Steel",
-          Material: "Iron",
-          "Shackle Thickness": "9 mm",
-          Levers: "7 Levers",
-          Weight: "260 g",
-          "Number of Keys": "3 Keys",
-          "Shackle Type": "Long",
-          "Finish Type": "Chrome",
-        },
-      },
-      {
-        size: "70 mm",
-        price: 85,
-        moq: "300 Piece",
-        image: inaya75Img,
-        gallery: [img("padlock heavy"), img("padlock metal"), img("padlock gate")],
-        specs: {
-          "Lock Size": "70 mm",
-          "Body Material": "Mild Steel",
-          Material: "Iron",
-          "Shackle Thickness": "10 mm",
-          Levers: "9 Levers",
-          Weight: "340 g",
-          "Number of Keys": "3 Keys",
-          "Shackle Type": "Long",
-          "Finish Type": "Chrome",
-        },
       },
     ],
   },
   {
     id: 2,
+    gallery: [harrisonsg, harrisonboxg],
     name: "Brass Padlock",
     categorySlug: "padlocks",
-    startingPrice: 140,
-    shortDescription: "Solid brass padlock — premium finish, rust-proof.",
-    image: lathi74Img,
+    quality: "best",
+    status: "active",
+    // startingPrice: 140,
+    price: 140,
+    // shortDescription: "Solid brass padlock — premium finish, rust-proof.",
+    image: harrisonlocki,
     material: "Solid Brass",
-    qualityGrade: "Premium",
+    // qualityGrade: "Premium",
     description:
       "Solid brass body padlock — rust-proof, weather-resistant, premium polished finish. Ideal for residential and outdoor use across coastal India.",
+    moq: "200 Piece",
+    Weight: "90 g",
+    size: "30 mm",
+    keys: 3,
     variants: [
       {
         size: "30 mm",
         price: 140,
-        moq: "200 Piece",
-        image: lathi74Img,
-        gallery: [img("brass lock"), img("brass key"), img("brass shiny")],
-        specs: {
-          "Lock Size": "30 mm",
-          Material: "Solid Brass",
-          "Shackle Thickness": "5 mm",
-          Levers: "4 Levers",
-          Weight: "90 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Polished Brass",
-        },
-      },
-      {
-        size: "40 mm",
-        price: 210,
-        moq: "200 Piece",
-        image: lathiyuvaImg,
-        gallery: [img("brass padlock"), img("brass premium"), img("brass gold")],
-        specs: {
-          "Lock Size": "40 mm",
-          Material: "Solid Brass",
-          "Shackle Thickness": "6 mm",
-          Levers: "5 Levers",
-          Weight: "140 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Polished Brass",
-        },
-      },
-      {
-        size: "50 mm",
-        price: 320,
-        moq: "150 Piece",
-        image: remexjeetImg,
-        gallery: [img("brass padlock heavy"), img("brass keylock"), img("brass marine")],
-        specs: {
-          "Lock Size": "50 mm",
-          Material: "Solid Brass",
-          "Shackle Thickness": "8 mm",
-          Levers: "6 Levers",
-          Weight: "220 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Polished Brass",
-        },
       },
     ],
   },
   {
     id: 3,
+    gallery: [inaya25li, inaya25sg],
     name: "Long Shackle Padlock",
     categorySlug: "padlocks",
-    startingPrice: 95,
-    shortDescription: "Extended shackle for gates, chains & shutters.",
-    image: taker65Img,
+    quality: "best",
+    status: "active",
+    // startingPrice: 95,
+    price: 95,
+    // shortDescription: "Extended shackle for gates, chains & shutters.",
+    image: inaya25li,
     material: "Hardened Steel",
-    qualityGrade: "Heavy Duty",
+    // qualityGrade: "Heavy Duty",
     description:
       "Long shackle padlocks for gates, chains, and shutters. Hardened steel shackle, brass-plated body.",
-    variants: [
-      {
-        size: "50 mm",
-        price: 95,
-        moq: "300 Piece",
-        image: inaya65Img,
-        gallery: [img("padlock long shackle"), img("padlock gate lock"), img("padlock chain")],
-        specs: {
-          "Lock Size": "50 mm",
-          "Shackle Length": "55 mm",
-          Material: "Hardened Steel",
-          "Shackle Thickness": "8 mm",
-          Levers: "6 Levers",
-          Weight: "240 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Brass Plated",
-        },
-      },
-      {
-        size: "65 mm",
-        price: 145,
-        moq: "250 Piece",
-        image: inaya75Img,
-        gallery: [img("padlock long"), img("padlock shutter"), img("padlock outdoor")],
-        specs: {
-          "Lock Size": "65 mm",
-          "Shackle Length": "70 mm",
-          Material: "Hardened Steel",
-          "Shackle Thickness": "10 mm",
-          Levers: "7 Levers",
-          Weight: "320 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Brass Plated",
-        },
-      },
-    ],
+    moq: "300 Piece",
+    Weight: "240 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [],
   },
   {
     id: 4,
+    gallery: [inayablacksetsi, inayablacklockkeylkg],
     name: "Heavy Duty Padlock",
     categorySlug: "padlocks",
-    startingPrice: 260,
-    shortDescription: "Marine-grade stainless steel padlock, weather-proof.",
-    image: remexjeetImg,
+    quality: "best",
+    status: "active",
+    // startingPrice: 260,
+    price: 260,
+    // shortDescription: "Marine-grade stainless steel padlock, weather-proof.",
+    image: inayablacksetsi,
     material: "SS 304",
-    qualityGrade: "Industrial",
+    // qualityGrade: "Industrial",
     description:
       "Marine-grade SS 304 padlocks for outdoor, coastal and industrial sites. Anti-corrosion, anti-cut shackle.",
+    moq: "150 Piece",
+    Weight: "260 g",
+    size: "50 mm",
+    keys: 3,
     variants: [
       {
         size: "50 mm",
         price: 260,
-        moq: "150 Piece",
-        image: remexjeetImg,
-        gallery: [img("ss padlock"), img("steel padlock"), img("marine padlock")],
-        specs: {
-          "Lock Size": "50 mm",
-          Material: "SS 304",
-          "Shackle Thickness": "8 mm",
-          Levers: "7 Levers",
-          Weight: "260 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Brushed Steel",
-        },
-      },
-      {
-        size: "60 mm",
-        price: 380,
-        moq: "100 Piece",
-        image: lathiyuvaImg,
-        gallery: [img("ss padlock heavy"), img("steel lock"), img("marine lock")],
-        specs: {
-          "Lock Size": "60 mm",
-          Material: "SS 304",
-          "Shackle Thickness": "10 mm",
-          Levers: "7 Levers",
-          Weight: "360 g",
-          "Number of Keys": "3 Keys",
-          "Finish Type": "Brushed Steel",
-        },
       },
     ],
   },
@@ -256,118 +196,89 @@ export const PRODUCTS = [
   // Safety Disc Locks
   {
     id: 5,
+    gallery: [inayatimepremium68mmlki, inayatimepremium68mmlki],
     name: "Safety Padlock",
-    categorySlug: "safety-disc-locks",
-    startingPrice: 240,
-    shortDescription: "Tamper-proof safety padlock for industrial lockout/tagout.",
-    image: timepremiumImg,
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 240,
+    price: 240,
+    // shortDescription: "Tamper-proof safety padlock for industrial lockout/tagout.",
+    image: inayatimepremium68mmlki,
     material: "Reinforced Steel",
-    qualityGrade: "Industrial Safety",
+    // qualityGrade: "Industrial Safety",
     description:
       "Tamper-proof safety padlocks engineered for lockout/tagout in factories. High-visibility colors, keyed-different option.",
+    moq: "50 Piece",
+    Weight: "260 g",
+    size: "60 mm",
+    keys: 2,
     variants: [
       {
-        size: "Standard 38 mm",
+        size: "50 mm",
         price: 240,
-        moq: "50 Piece",
-        image: timepremiumImg,
-        gallery: [img("safety padlock"), img("lockout padlock"), img("safety red")],
-        specs: {
-          "Lock Size": "38 mm",
-          Material: "Reinforced Steel",
-          Finish: "Safety Red",
-          Weight: "260 g",
-          "Number of Keys": "2 Keys",
-          Application: "LOTO",
-        },
       },
       {
-        size: "Standard 42 mm",
-        price: 320,
-        moq: "50 Piece",
-        image: lathi74Img,
-        gallery: [img("safety padlock yellow"), img("lockout yellow"), img("industrial safety")],
-        specs: {
-          "Lock Size": "42 mm",
-          Material: "Reinforced Steel",
-          Finish: "Safety Yellow",
-          Weight: "300 g",
-          "Number of Keys": "2 Keys",
-          Application: "LOTO",
-        },
+        size: "65 mm",
+        price: 240,
       },
     ],
   },
   {
     id: 6,
+    gallery: [
+      inayaclassic75mmroundcatgc,
+      inayaclassic75mmlockandlockkeycog,
+      inayaclassic75mmlockandlockkeyg,
+      inayaclassic75mmroundcatgc,
+      inayaclassic75mmroundgli,
+      inaya75mm,
+    ],
     name: "Disc Padlock",
-    categorySlug: "safety-disc-locks",
-    startingPrice: 180,
-    shortDescription: "High-security disc detainer padlock, pick-resistant.",
-    image: inayaImg,
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 180,
+    price: 180,
+    // shortDescription: "High-security disc detainer padlock, pick-resistant.",
+    image: inayaclassic75mmroundgli,
     material: "Hardened Alloy",
-    qualityGrade: "High Security",
+    // qualityGrade: "High Security",
     description:
       "Disc-detainer mechanism — pick-resistant, drill-resistant. Closed shoulder body protects the shackle.",
+    moq: "100 Piece",
+    Weight: "300 g",
+    size: "60 mm",
+    keys: 3,
     variants: [
       {
-        size: "60 mm",
+        size: "65 mm",
         price: 180,
-        moq: "100 Piece",
-        image: inaya65Img,
-        gallery: [img("disc padlock"), img("chrome lock"), img("security lock")],
-        specs: {
-          "Lock Size": "60 mm",
-          Material: "Hardened Alloy",
-          "Shackle Thickness": "10 mm",
-          Mechanism: "Disc Detainer",
-          Weight: "300 g",
-          "Number of Keys": "3 Keys",
-          Finish: "Chrome",
-        },
-      },
-      {
-        size: "70 mm",
-        price: 260,
-        moq: "100 Piece",
-        image: inaya75Img,
-        gallery: [img("disc padlock heavy"), img("disc security"), img("chrome heavy lock")],
-        specs: {
-          "Lock Size": "70 mm",
-          Material: "Hardened Alloy",
-          "Shackle Thickness": "12 mm",
-          Mechanism: "Disc Detainer",
-          Weight: "420 g",
-          "Number of Keys": "3 Keys",
-          Finish: "Chrome",
-        },
       },
     ],
   },
   {
     id: 7,
+    gallery: [inayaactiveslv5363, inayaslvi],
     name: "Combination Lock",
-    categorySlug: "safety-disc-locks",
-    startingPrice: 180,
-    shortDescription: "4-digit combination padlock, keyless convenience.",
-    image: timepremiumImg,
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 180,
+    price: 180,
+    // shortDescription: "4-digit combination padlock, keyless convenience.",
+    image: inayaslvi,
     material: "Zinc Alloy",
-    qualityGrade: "Standard",
+    // qualityGrade: "Standard",
     description: "Resettable 4-digit combination padlock for lockers, gym bags and light security.",
+    moq: "100 Piece",
+    Weight: "140 g",
+    size: "63 mm",
+    keys: 0,
     variants: [
       {
-        size: "Standard",
+        size: "53 mm",
         price: 180,
-        moq: "100 Piece",
-        image: timepremiumImg,
-        gallery: [img("combination lock"), img("number lock"), img("keyless lock")],
-        specs: {
-          Material: "Zinc Alloy",
-          Digits: "4",
-          Resettable: "Yes",
-          Weight: "140 g",
-          Finish: "Black/Silver",
-        },
       },
     ],
   },
@@ -376,141 +287,517 @@ export const PRODUCTS = [
   {
     id: 8,
     name: "Shutter Lock",
-    categorySlug: "hardware",
-    startingPrice: 150,
-    shortDescription: "Robust shutter lock for shops, warehouses & garages.",
-    image: lathiyuvaImg,
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 150,
+    price: 20,
+    // shortDescription: "Robust shutter lock for shops, warehouses & garages.",
+    image: inayaclassic65mmlockkeyi,
     material: "Mild Steel",
-    qualityGrade: "Commercial",
+    // qualityGrade: "Commercial",
     description:
       "Heavy-gauge shutter locks for shop fronts, godowns and warehouses. Galvanized finish, anti-rust.",
+    moq: "100 Piece",
+    gallery: [inayaclassic65mmsetg, inayaclassic65mmlockkeyi, inayaclassic65mmsetg],
+    Weight: "350 g",
+    size: "Standard",
+    keys: 3,
     variants: [
       {
         size: "Standard",
         price: 150,
-        moq: "100 Piece",
-        image: lathiyuvaImg,
-        gallery: [img("shutter lock"), img("warehouse lock"), img("shop shutter")],
-        specs: {
-          Material: "Mild Steel",
-          Finish: "Galvanized",
-          Weight: "350 g",
-          "Number of Keys": "3 Keys",
-          Application: "Shop Shutter / Warehouse",
-        },
       },
       {
         size: "Heavy",
-        price: 280,
-        moq: "100 Piece",
-        image: remexjeetImg,
-        gallery: [img("shutter heavy"), img("godown lock"), img("warehouse heavy lock")],
-        specs: {
-          Material: "Mild Steel",
-          Finish: "Galvanized",
-          Weight: "520 g",
-          "Number of Keys": "3 Keys",
-          Application: "Industrial Shutter",
-        },
+        price: 20,
       },
     ],
   },
   {
     id: 9,
     name: "Tower Bolt",
-    categorySlug: "hardware",
-    startingPrice: 45,
-    shortDescription: "Heavy tower bolt for doors & gates, smooth slide.",
-    image: taker65Img,
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 45,
+    price: 45,
+    // shortDescription: "Heavy tower bolt for doors & gates, smooth slide.",
+    image: lathi74mmlkci,
     material: "Brass / SS",
-    qualityGrade: "Premium",
+    // qualityGrade: "Premium",
     description:
       "Tower bolts in brass and stainless steel — smooth slide action, polished finish. For doors, windows, and gates.",
+    moq: "200 Piece",
+    gallery: [lathi74mmlkci, lathi74mmg, lathi74mmbcg],
+    Weight: "120 g",
+    size: '4"',
+    keys: 0,
     variants: [
       {
-        size: '4"',
+        size: '65 mm"',
         price: 45,
-        moq: "200 Piece",
-        image: taker65Img,
-        gallery: [img("tower bolt"), img("door bolt"), img("brass hardware")],
-        specs: {
-          Length: "4 inch",
-          Material: "Brass",
-          Finish: "Polished",
-          Weight: "120 g",
-          Application: "Doors / Windows",
-        },
-      },
-      {
-        size: '6"',
-        price: 85,
-        moq: "200 Piece",
-        image: inaya75Img,
-        gallery: [img("tower bolt long"), img("door bolt long"), img("brass long")],
-        specs: {
-          Length: "6 inch",
-          Material: "Brass",
-          Finish: "Polished",
-          Weight: "180 g",
-          Application: "Doors / Gates",
-        },
-      },
-      {
-        size: '12"',
-        price: 160,
-        moq: "150 Piece",
-        image: lathi74Img,
-        gallery: [img("tower bolt heavy"), img("gate bolt"), img("brass gate")],
-        specs: {
-          Length: "12 inch",
-          Material: "SS",
-          Finish: "Brushed",
-          Weight: "320 g",
-          Application: "Gates",
-        },
       },
     ],
   },
   {
     id: 10,
     name: "Cupboard Lock",
-    categorySlug: "hardware",
-    startingPrice: 35,
-    shortDescription: "Compact cupboard / drawer lock with smooth cam action.",
-    image: lathiyuvaImg,
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 35,
+    price: 35,
+    // shortDescription: "Compact cupboard / drawer lock with smooth cam action.",
+    image: takerpushlockc65mmlki,
     material: "Brass + Steel",
-    qualityGrade: "Standard",
+    // qualityGrade: "Standard",
     description:
       "Cam-action cupboard and drawer locks. Nickel finish, smooth action. Used in furniture industry across India.",
+    moq: "300 Piece",
+    gallery: [
+      takershaktipush65mmg,
+      takershaktipushbox65mmg,
+      takershaktipush64mmsetsg,
+      takerpushlockc65mmlki,
+    ],
+    Weight: "60 g",
+    size: "16 mm",
+    keys: 0,
     variants: [
       {
         size: "16 mm",
         price: 35,
-        moq: "300 Piece",
-        image: lathiyuvaImg,
-        gallery: [img("cupboard lock"), img("drawer lock"), img("furniture lock")],
-        specs: {
-          "Lock Size": "16 mm",
-          Material: "Brass + Steel",
-          Finish: "Nickel",
-          Weight: "60 g",
-          Application: "Drawers",
-        },
       },
       {
         size: "22 mm",
         price: 55,
-        moq: "300 Piece",
-        image: remexjeetImg,
-        gallery: [img("cupboard"), img("furniture lock medium"), img("drawer brass")],
-        specs: {
-          "Lock Size": "22 mm",
-          Material: "Brass + Steel",
-          Finish: "Nickel",
-          Weight: "90 g",
-          Application: "Cupboards",
-        },
       },
+    ],
+  },
+  {
+    id: 11,
+    name: "padlocks",
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: lathiyuva70mmlockkey2sidekeyli,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [
+      lathiyuva70mm2sidekeybackg,
+      lathiyuva70mmbox2sidekyg,
+      lthiyuva70mm2sidekeylockfrontg,
+      lathiyuva70mmlockkey2sidekeyli,
+    ],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+      {
+        size: "60 mm",
+        price: 75,
+      },
+      {
+        size: "70 mm",
+        price: 95,
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Multi Purpose Lock",
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: inayacaptain52setcmmi,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+      {
+        size: "60 mm",
+        price: 75,
+      },
+      {
+        size: "70 mm",
+        price: 95,
+      },
+    ],
+  },
+  {
+    id: 13,
+    name: "Multi Purpose Lock",
+    categorySlug: "padlocks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: remexjeet86mmlkci,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [remexjeetsetcg, remexjeet86mmlkci],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+      {
+        size: "60 mm",
+        price: 75,
+      },
+      {
+        size: "70 mm",
+        price: 95,
+      },
+    ],
+  },
+  {
+    id: 14,
+    name: "Multi Purpose Lock",
+    categorySlug: "aldrop",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: aldrop,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [remexjeetsetcg, remexjeet86mmlkci],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+      {
+        size: "60 mm",
+        price: 75,
+      },
+      {
+        size: "70 mm",
+        price: 95,
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "Multi Purpose Lock",
+    categorySlug: "aldrop",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: aldropkit,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [aldropkit, aldrop, aldropkitc],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+      {
+        size: "60 mm",
+        price: 75,
+      },
+      {
+        size: "70 mm",
+        price: 95,
+      },
+    ],
+  },
+  {
+    id: 16,
+    name: "Multi Purpose Lock",
+    categorySlug: "aldrop",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: aldropkitc,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [aldropkit, aldrop, aldropkitc],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+    ],
+  },
+  {
+    id: 17,
+    name: "Multi Purpose Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: multi,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+    ],
+  },
+  {
+    id: 18,
+    name: "Parda breaket",
+    categorySlug: "Breaket",
+    quality: "best",
+    status: "active",
+    // startingPrice: 59,
+    price: 59,
+    // shortDescription: "Versatile multi-purpose lock suitable for doors, shutters, gates, cabinets, and luggage.",
+    image: breaket,
+    material: "Hardened Steel",
+    // qualityGrade: "Premium",
+    description:
+      "Our premium multi-purpose locks are designed for maximum security and durability. Manufactured in Aligarh using high-quality materials, these locks feature a hardened steel shackle, precision locking mechanism, and corrosion-resistant finish. Ideal for homes, offices, shops, warehouses, gates, shutters, lockers, and luggage. Trusted by distributors and hardware dealers across India.",
+    moq: "400 Piece",
+    gallery: [],
+    Weight: "220 g",
+    size: "50 mm",
+    keys: 3,
+    variants: [
+      {
+        size: "50 mm",
+        price: 59,
+      },
+    ],
+  },
+
+  {
+    id: 18,
+    name: "White Metal Multi Lever Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO: add real price
+    image: whitemetalmultii,
+    material: "Hardened Steel", // TODO: confirm material
+    description: "White metal multi-lever lock — precision locking mechanism.", // TODO: replace with real description
+    moq: "N/A", // TODO
+    gallery: [whitemetalmultig],
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO: fill actual size/price
+    ],
+  },
+  {
+    id: 19,
+    name: "Cello Multi Blue Lever Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: "black metal",// blck white metal multi image
+    material: "Hardened Steel", // TODO
+    description: "Cello multi-purpose blue lever lock.", // TODO
+    moq: "N/A", // TODO
+    gallery: [multi], // no separate gallery image found for this one
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
+    ],
+  },
+  {
+    id: 20,
+    name: "Ultra Euro Blue Cupboard Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: ultraeurobluecupboardi,
+    material: "Hardened Steel", // TODO
+    description: "Ultra Euro series blue cupboard lock.", // TODO
+    moq: "N/A", // TODO
+    gallery: [ultraeurobluecupboardg],
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
+    ],
+  },
+  {
+    id: 21,
+    name: "Orel Ultra Square Cupboard SS Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: orelultrasquarecupssi,
+    material: "Stainless Steel", // TODO: confirm
+    description: "Orel Ultra square cupboard lock in stainless steel finish.", // TODO
+    moq: "N/A", // TODO
+    gallery: [], // no separate gallery image found for this one
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
+    ],
+  },
+  // {
+  //   id: 22,
+  //   name: "Orel Cup Ultra SS Euro Lock",
+  //   categorySlug: "multi-purpose-locks",
+  //   quality: "best",
+  //   status: "active",
+  //   price: 0, // TODO
+  //   image: orelcupultrasseuroi,
+  //   material: "Stainless Steel", // TODO: confirm
+  //   description: "Orel Euro series cupboard lock, stainless steel body.", // TODO
+  //   moq: "N/A", // TODO
+  //   gallery: [], // no separate gallery image found for this one
+  //   Weight: "N/A", // TODO
+  //   size: "N/A", // TODO
+  //   keys: 3, // TODO
+  //   variants: [
+  //     { size: "N/A", price: 0 }, // TODO
+  //   ],
+  // },
+  {
+    id: 23,
+    name: "Multi Square Lever Silver Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: multisqrlevrslvi,
+    material: "Hardened Steel", // TODO
+    description: "Multi-purpose square lever lock, silver finish.", // TODO
+    moq: "N/A", // TODO
+    gallery: [multisqrlevrslvg],
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
+    ],
+  },
+  {
+    id: 24,
+    name: "Lever Cupboard SS Euro Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: levercupboardsseur,
+    material: "Stainless Steel", // TODO
+    description: "Lever cupboard lock, stainless steel Euro finish.", // TODO
+    moq: "N/A", // TODO
+    gallery: [], // no separate gallery image found for this one
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
+    ],
+  },
+  {
+    id: 25,
+    name: "Euro Ultra SS Jordan Cupboard Lock",
+    categorySlug: "multi-purpose-locks",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: euroultrassjordancup,
+    material: "Stainless Steel", // TODO
+    description: "Euro Ultra Jordan-series cupboard lock, stainless steel finish.", // TODO
+    moq: "N/A", // TODO
+    gallery: [], // no separate gallery image found for this one
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
+    ],
+  },
+  {
+    id: 26,
+    name: "Aldrop Europa Silver Lock",
+    categorySlug: "hardware",
+    quality: "best",
+    status: "active",
+    price: 0, // TODO
+    image: aldropeuropaslv,
+    material: "Hardened Steel", // TODO
+    description: "Aldrop Europa series lock, silver finish — for doors and gates.", // TODO
+    moq: "N/A", // TODO
+    gallery: [], // no separate gallery image found for this one
+    Weight: "N/A", // TODO
+    size: "N/A", // TODO
+    keys: 3, // TODO
+    variants: [
+      { size: "N/A", price: 0 }, // TODO
     ],
   },
 ];

@@ -22,7 +22,7 @@ const MILESTONES = [
   { y: "2005", t: "Founded in Aligarh", d: "Started as a small workshop in Jamalpur, Aligarh." },
   { y: "2004", t: "BIS Certification", d: "Padlock range certified by Bureau of Indian Standards." },
   { y: "2012", t: "Gujarat Hub Opened", d: "Surat distribution hub enabling 24-hr pan-India dispatch." },
-  { y: "2024", t: "30 Years Strong", d: "Serving 2005+ distributors across India." },
+  { y: "2024", t: "21 Years Strong", d: "Serving 1400+ distributors and retailers across India." },
 ];
 
 export default function About() {
@@ -130,7 +130,7 @@ export default function About() {
       </div>
     </section>
 
-      <section className="bg-white py-16">
+      {/* <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">Find Us</span>
@@ -166,7 +166,7 @@ export default function About() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Owner section */}
       <section className="bg-slate-50 py-16">
