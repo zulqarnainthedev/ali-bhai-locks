@@ -32,11 +32,11 @@ export default function Navbar() {
         <nav className="hidden items-center gap-1 md:flex">
           <NavLink to="/" end className={linkCls}>Home</NavLink>
           <NavLink to="/products" className={linkCls}>All Products</NavLink>
-          {CATEGORIES.map((c) => (
+          {/* {CATEGORIES.map((c) => (
             <NavLink key={c.slug} to={`/products/${c.slug}`} className={linkCls}>
               {c.name}
             </NavLink>
-          ))}
+          ))} */}
           <NavLink to="/about" className={linkCls}>About</NavLink>
           <NavLink to="/my-orders" className={linkCls}>My Orders</NavLink>
         </nav>

@@ -1,22 +1,42 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { PRODUCTS, CATEGORIES } from "../data/products.js";
+import { CATEGORIES } from "../data/products.js";
 import ProductCard from "../components/common/ProductCard.jsx";
 import ProductDetailsModal from "../components/common/ProductDetailsModal.jsx";
+import { getProducts } from "../API/products/productAPIs.js";
 
 const FILTERS = [{ slug: "all", name: "All" }, ...CATEGORIES];
 
 export default function Products() {
-  useEffect(() => {
-    document.title = "All Products — Ali Bhai Hardware";
-  }, []);
+  const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [active, setActive] = useState("all");
   const [selected, setSelected] = useState(null);
 
-  const list = useMemo(
-    () => (active === "all" ? PRODUCTS : PRODUCTS.filter((p) => p.categorySlug === active)),
-    [active]
-  );
+  useEffect(() => {
+    document.title = "All Products — Ali Bhai Hardware";
+  }, []);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        setIsLoading(true);
+        const response = await getProducts();
+        // Backend returns a paginated object: { content: [...], totalElements, ... }
+        setList(response?.content || []);
+      } catch (error) {
+        console.error("Failed to load products:", error);
+        setList([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
+
+  const filteredList =
+    active === "all" ? list : list.filter((p) => p.category?.slug === active);
 
   return (
     <section className="bg-slate-50 py-12">
@@ -51,11 +71,17 @@ export default function Products() {
           )}
         </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((p) => (
-            <ProductCard key={p.id} product={p} onOpen={setSelected} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="mt-10 text-center text-slate-500">Loading products...</div>
+        ) : filteredList.length === 0 ? (
+          <div className="mt-10 text-center text-slate-500">No products found.</div>
+        ) : (
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+            {filteredList.map((p) => (
+              <ProductCard key={p.id} product={p} onOpen={setSelected} />
+            ))}
+          </div>
+        )}
       </div>
 
       {selected && <ProductDetailsModal product={selected} onClose={() => setSelected(null)} />}
