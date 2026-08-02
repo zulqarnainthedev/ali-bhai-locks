@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { Shield, Phone, Mail, MapPin } from "lucide-react";
 import { CATEGORIES } from "../../data/products.js";
-
+import logo from "../../assets/logo.png"
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-4 lg:px-8">
         <div>
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-600">
-              <Shield className="h-6 w-6 text-white" />
+            <div className="flex items-center justify-center rounded-lg bg-amber-600">
+              <img src={logo} className="h-14 w-14 rounded-lg text-white" />
             </div>
             <div className="text-lg font-bold text-white">Ali Bhai Hardware</div>
           </div>
