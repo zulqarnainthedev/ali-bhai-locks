@@ -4,7 +4,7 @@ export async function getProducts(){
 
 try{
 
-const response = await axios("http://localhost:5000/api/products")
+const response = await axios("https://hardware-api-1kp1.onrender.com/api/products");
 return response.data
 
 
