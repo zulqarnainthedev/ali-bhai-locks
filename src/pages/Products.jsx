@@ -8,35 +8,35 @@ import { getProducts } from "../API/products/productAPIs.js";
 const FILTERS = [{ slug: "all", name: "All" }, ...CATEGORIES];
 
 export default function Products() {
-  const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [product, setProduct] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("all_products") || "[]");
+    } catch {
+      return [];
+    }
+  });
+
   const [active, setActive] = useState("all");
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     document.title = "All Products — Ali Bhai Hardware";
-  }, []);
 
-  useEffect(() => {
+    if (product.length > 0) return;
+
     const loadProducts = async () => {
-      try {
-        setIsLoading(true);
-        const response = await getProducts();
-        // Backend returns a paginated object: { content: [...], totalElements, ... }
-        setList(response?.content || []);
-      } catch (error) {
-        console.error("Failed to load products:", error);
-        setList([]);
-      } finally {
-        setIsLoading(false);
-      }
+      const response = await getProducts();
+      const fetchedProducts = response?.content || [];
+
+      localStorage.setItem("all_products", JSON.stringify(fetchedProducts));
+      setProduct(fetchedProducts);
     };
 
     loadProducts();
   }, []);
 
   const filteredList =
-    active === "all" ? list : list.filter((p) => p.category?.slug === active);
+    active === "all" ? product : product?.filter((p) => p.category?.slug === active);
 
   return (
     <section className="bg-slate-50 py-12">
@@ -71,9 +71,7 @@ export default function Products() {
           )}
         </div>
 
-        {isLoading ? (
-          <div className="mt-10 text-center text-slate-500">Loading products...</div>
-        ) : filteredList.length === 0 ? (
+        { filteredList.length === 0 ? (
           <div className="mt-10 text-center text-slate-500">No products found.</div>
         ) : (
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-5">

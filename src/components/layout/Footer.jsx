@@ -38,9 +38,9 @@ export default function Footer() {
         <div>
           <h4 className="mb-3 text-sm font-bold uppercase tracking-wide text-white">Contact</h4>
           <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Jamalpur, Aligarh, UP</li>
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> 2005 98XXX XXXXX</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> info@alibhaihardware.in</li>
+            <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Jamalpur, Aligarh, UP manufacturing & Gujarat hub</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> 7983757174</li>
+            <li className="flex items-center gap-2"><Mail className="h-4 w-4" />zulqarnainthedev@gmail.com</li>
           </ul>
         </div>
       </div>
