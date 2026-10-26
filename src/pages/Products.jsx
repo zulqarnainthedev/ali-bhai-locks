@@ -72,9 +72,9 @@ export default function Products() {
         </div>
 
         { filteredList.length === 0 ? (
-          <div className="mt-10 text-center text-slate-500">No products found.</div>
+          <div className="mt-10 text-center text-slate-500">Loading products...</div>
         ) : (
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-5">
             {filteredList.map((p) => (
               <ProductCard key={p.id} product={p} onOpen={setSelected} />
             ))}

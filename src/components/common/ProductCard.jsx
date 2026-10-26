@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addToEnquiry } from "../../store/store.js";
 import { useToast } from "../../context/ToastContext.jsx";
-import { Phone, ImageOff } from "lucide-react";
+import { Phone, ImageOff, ShoppingCart } from "lucide-react";
 
 const FALLBACK_IMAGE = "/placeholder-product.png"; // apne project ke hisaab se path adjust kar lijiye
 
@@ -59,13 +59,13 @@ export default function ProductCard({ product, onOpen }) {
       <div className="p-2">
         <h3 className="font-semibold text-slate-900">{product.name}</h3>
         <p className="line-clamp-2 text-xs text-slate-600">{product.shortDescription}</p>
-
+<p>{product.price}</p>
         <div className="mt-1 flex items-center justify-end">
           <button
             onClick={handleAdd}
             className="inline-flex items-center gap-1 rounded-lg bg-amber-600 px-2 py-2 text-xs font-bold text-white hover:bg-amber-700"
           >
-            <Phone className="h-3.5 w-3.5" /> Get best price
+            <ShoppingCart className="h-3.5 w-3.5" /> Add to Cart
           </button>
         </div>
       </div>

@@ -5,6 +5,7 @@ import CategoryPage from "../pages/CategoryPage.jsx";
 import About from "../pages/About.jsx";
 import Login from "../pages/Login.jsx";
 import MyOrders from "../pages/MyOrders.jsx";
+import Profile from "../pages/Profile.jsx";
 import NotFound from "../pages/NotFound.jsx";
 
 export default function AppRoutes() {
@@ -16,6 +17,7 @@ export default function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/login" element={<Login />} />
       <Route path="/my-orders" element={<MyOrders />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

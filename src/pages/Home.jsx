@@ -8,7 +8,7 @@ import ProductDetailsModal from "../components/common/ProductDetailsModal.jsx";
 import EnquiryForm from "../components/common/EnquiryForm.jsx";
 import ProductFeatures from "../components/common/ProductFeatured.jsx";
 import { getProducts } from "../API/products/productAPIs.js";
-
+import founder2 from "../assets/founder2.jpeg";
 function useTitle(t, d) {
   useEffect(() => {
     document.title = t;
@@ -89,10 +89,14 @@ const {
             {/* <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-amber-500/15 ring-1 ring-amber-400/30">
               <Lock className="h-7 w-7 sm:h-8 sm:w-8 text-amber-400" />
             </div> */}
-
+       {/* Small trust badge above the headline */}
+<span className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-300 sm:text-sm">
+  <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />
+  Direct from Factories
+</span>
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight max-w-3xl">
-              Locks Manufactured in{" "}
+              All type Locks and Hardware Items Manufactured in{" "}
               <span className="text-amber-400">Aligarh.</span>{" "}
               Trusted Across{" "}
               <span className="text-amber-400">India.</span>
@@ -163,38 +167,60 @@ const {
           </div>
 
           {/* Review cards */}
-          <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            <div className="rounded-xl bg-white/5 ring-1 ring-white/10 backdrop-blur px-4 py-3">
-              <div className="flex items-center gap-2">
-                <div className="rounded-full bg-amber-500/20 p-2 shrink-0">
-                  <Star className="h-4 w-4 text-amber-300" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-300">What customers say</p>
-                  <p className="text-sm font-bold text-white">Trusted by retailers & distributors</p>
-                </div>
-              </div>
-              <p className="mt-2 text-xs text-slate-300">
-                "On-time dispatch, fair pricing, and consistent quality."
-              </p>
-              <p className="mt-1 text-[11px] text-slate-400">— Verified wholesale buyers</p>
-            </div>
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+  
+  {/* Trust Card */}
+  <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur-md px-4 py-4 sm:px-5 sm:py-4">
+    <div className="flex items-start gap-3">
+      <div className="rounded-full bg-amber-500/20 p-2.5 shrink-0">
+        <Star className="h-4 w-4 text-amber-300" />
+      </div>
 
-            <div className="rounded-xl bg-white/5 ring-1 ring-white/10 backdrop-blur px-4 py-3">
-              <div className="flex items-start gap-3">
-                <div className="rounded-full bg-amber-500/20 p-2 shrink-0">
-                  <Truck className="h-4 w-4 text-amber-300" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-300">Delivery & support</p>
-                  <p className="text-sm font-bold text-white">Free delivery to your door step in India.</p>
-                  <p className="mt-2 text-xs text-slate-300">
-                    Customer support within 30 minutes during business hours.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="min-w-0">
+        <p className="text-xs text-slate-300">
+          What customers say
+        </p>
+
+        <p className="mt-0.5 text-sm font-bold leading-snug text-white">
+          Trusted by retailers & distributors
+        </p>
+      </div>
+    </div>
+
+    <p className="mt-3 text-xs leading-relaxed text-slate-300">
+      "On-time dispatch, fair pricing, and consistent quality."
+    </p>
+
+    <p className="mt-1.5 text-[11px] leading-relaxed text-slate-400">
+      — Verified wholesale buyers
+    </p>
+  </div>
+
+
+  {/* Delivery Card */}
+  <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur-md px-4 py-4 sm:px-5 sm:py-4">
+    <div className="flex items-start gap-3">
+      <div className="rounded-full bg-amber-500/20 p-2.5 shrink-0">
+        <Truck className="h-4 w-4 text-amber-300" />
+      </div>
+
+      <div className="min-w-0">
+        <p className="text-xs text-slate-300">
+          Delivery & support
+        </p>
+
+        <p className="mt-0.5 text-sm font-bold leading-snug text-white">
+          Free delivery to your doorstep in India.
+        </p>
+
+        <p className="mt-2 text-xs leading-relaxed text-slate-300">
+          Customer support within 30 minutes during business hours.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
         </div>
       </section>
 

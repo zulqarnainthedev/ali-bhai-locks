@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { X, IndianRupee, Plus } from "lucide-react";
+import { X, IndianRupee, ShoppingCart, ShieldCheck } from "lucide-react";
 import Lightbox from "./Lightbox.jsx";
 import { addToEnquiry } from "../../store/store.js";
 import { useToast } from "../../context/ToastContext.jsx";
@@ -12,10 +12,21 @@ export default function ProductDetailsModal({ product, onClose }) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+
+    window.history.pushState(
+      { ...window.history.state, productModal: true },
+      "",
+      window.location.href
+    );
+
+    const handlePopState = () => onClose();
+    window.addEventListener("popstate", handlePopState);
+
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("popstate", handlePopState);
     };
-  }, []);
+  }, [onClose]);
 
   if (!product) return null;
 
@@ -25,6 +36,8 @@ export default function ProductDetailsModal({ product, onClose }) {
   const displayPrice = hasDiscount ? product.newPrice : product.price;
 
   const handleAdd = (variant) => {
+    if (!variant) return;
+
     dispatch(
       addToEnquiry({
         id: variant.id,
@@ -33,25 +46,32 @@ export default function ProductDetailsModal({ product, onClose }) {
         price: variant.price,
       })
     );
-    showToast(`${product.name} ${variant.size} added to enquiry`);
+    showToast(`${product.name} ${variant.size} added to cart`);
+  };
+
+  const availableVariant = product.variants?.find((variant) => variant.stockStatus !== "OUT_OF_STOCK");
+  const closeModal = () => {
+    if (window.history.state?.productModal) window.history.back();
+    else onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-[150] flex items-start justify-center overflow-y-auto bg-black/70 p-0 sm:p-6">
-      <div className="relative w-full max-w-5xl bg-white shadow-2xl sm:rounded-2xl">
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white px-5 py-3 sm:rounded-t-2xl">
+    <div className="fixed inset-0 z-[150] flex items-start justify-center overflow-y-auto bg-slate-950/75 p-0 backdrop-blur-sm sm:p-6">
+      <div className="relative w-full max-w-5xl overflow-hidden bg-white shadow-2xl sm:rounded-2xl">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white/95 px-5 py-4 backdrop-blur sm:rounded-t-2xl">
           <div>
-            <h2 className="text-lg font-bold text-slate-900 sm:text-xl">{product.name}</h2>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-600">Product details</p>
+            <h2 className="mt-1 text-lg font-bold text-slate-900 sm:text-xl">{product.name}</h2>
             <p className="text-xs text-slate-500">
               {product.category?.name} {specs["Material"] && `• ${specs["Material"]}`}
             </p>
           </div>
-          <button onClick={onClose} className="rounded-full p-2 hover:bg-slate-100" aria-label="Close">
+          <button onClick={closeModal} className="rounded-full p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" aria-label="Close">
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="px-5 py-5">
+        <div className="px-5 py-6 sm:px-8">
           {/* Overview */}
           <div className="grid gap-6 sm:grid-cols-[280px_1fr]">
             <div className="space-y-2">
@@ -101,6 +121,20 @@ export default function ProductDetailsModal({ product, onClose }) {
 
               <p className="mt-3 text-sm leading-relaxed text-slate-700">{product.description}</p>
 
+              <div className="mt-5 flex flex-col gap-3 rounded-xl bg-slate-900 p-4 text-white sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-sm font-bold">Ready to add this lock?</p>
+                  <p className="mt-1 text-xs text-slate-300">Select a size below or add the first available size.</p>
+                </div>
+                <button
+                  onClick={() => handleAdd(availableVariant)}
+                  disabled={!availableVariant}
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <ShoppingCart className="h-4 w-4" /> Add to Cart
+                </button>
+              </div>
+
               <dl className="mt-4 grid grid-cols-2 gap-y-2 text-xs">
                 {specs["Material"] && (
                   <>
@@ -130,14 +164,19 @@ export default function ProductDetailsModal({ product, onClose }) {
 
           {/* Variants */}
           <div className="mt-8">
-            <h3 className="font-display text-xl font-bold text-slate-900">Available Sizes</h3>
-            <p className="text-sm text-slate-500">Choose a size to add it to your enquiry.</p>
+            <div className="flex items-end justify-between gap-3">
+              <div>
+                <h3 className="font-display text-xl font-bold text-slate-900">Available Sizes</h3>
+                <p className="text-sm text-slate-500">Choose a size to add it to your cart.</p>
+              </div>
+              <ShieldCheck className="hidden h-6 w-6 text-emerald-600 sm:block" aria-label="Quality product" />
+            </div>
 
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-2">
               {product.variants?.map((v) => (
                 <div
                   key={v.id}
-                  className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                  className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-amber-300 hover:shadow-md"
                 >
                   <div>
                     <p className="text-sm font-bold text-slate-900">{v.size}</p>
@@ -154,9 +193,9 @@ export default function ProductDetailsModal({ product, onClose }) {
                   <button
                     onClick={() => handleAdd(v)}
                     disabled={v.stockStatus === "OUT_OF_STOCK"}
-                    className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-bold text-white hover:bg-amber-700 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-amber-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    <Plus className="h-4 w-4" /> Add
+                    <ShoppingCart className="h-4 w-4" /> Add to Cart
                   </button>
                 </div>
               ))}

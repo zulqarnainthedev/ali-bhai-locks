@@ -31,7 +31,7 @@ export default function Login() {
     onSuccess: (data) => {
       if (data?.accessToken) setToken(data.accessToken,data?.refreshToken);
     
-      if (data?.user) localStorage.setItem("user", JSON.stringify(data.user));
+      if (data?.user) localStorage.setItem("abh_user", JSON.stringify(data.user));
       alert("Registration Successful");
       navigate("/");
     },
@@ -40,12 +40,13 @@ export default function Login() {
     },
   });
 
-  const { mutate: login, isPending: isLoggingIn } = useMutation({
+  const { mutate: login, isPending: isLoggingIn ,data} = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      if (data?.accessToken) setToken(data.token);
-      if (data?.user) localStorage.setItem("user", JSON.stringify(data.user));
+      if (data?.accessToken) setToken(data.accessToken, data?.refreshToken);
+      if (data?.user) localStorage.setItem("abh_user", JSON.stringify(data.user));
       alert("Login Successful");
+      
       navigate("/");
     },
     onError: (error) => {
@@ -59,12 +60,12 @@ export default function Login() {
 
   const submit = (e) => {
     e.preventDefault();
-register(form);
-    // if (mode === "signup") {
-    //   register(form);
-    // } else {
-    //   login({ email: form.email, password: form.password });
-    // }
+
+    if (mode === "signup") {
+      register(form);
+    } else {
+      login({ email: form.email, password: form.password });
+    }
   };
 
   const isSubmitting = isRegistering || isLoggingIn;
