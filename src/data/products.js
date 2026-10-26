@@ -71,12 +71,13 @@ import takershaktipushbox65mmg from "../assets/locks/padlocks/takershaktipushbox
 
 export const CATEGORIES = [
   { slug: "padlocks", name: "Padlocks", description: "Brass, iron, SS & specialty padlocks." },
-  
+
   {
-    slug: "multi-purpose-locks",
-    name: "Multi Purpose and drawer Locks",
+    slug: "furniture-locks",
+    name: "Furniture locks",
     description: "Industrial safety & disc locks.",
   },
+
   {
     slug: "aldrop",
     name: "Alrop-Aldrop kit",
@@ -579,7 +580,7 @@ export const PRODUCTS = [
   {
     id: 17,
     name: "Multi Purpose Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     // startingPrice: 59,
@@ -632,7 +633,7 @@ export const PRODUCTS = [
   {
     id: 18,
     name: "White Metal Multi Lever Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO: add real price
@@ -651,7 +652,7 @@ export const PRODUCTS = [
   {
     id: 19,
     name: "Cello Multi Blue Lever Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO
@@ -670,7 +671,7 @@ export const PRODUCTS = [
   {
     id: 20,
     name: "Ultra Euro Blue Cupboard Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO
@@ -689,7 +690,7 @@ export const PRODUCTS = [
   {
     id: 21,
     name: "Orel Ultra Square Cupboard SS Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO
@@ -708,7 +709,7 @@ export const PRODUCTS = [
   // {
   //   id: 22,
   //   name: "Orel Cup Ultra SS Euro Lock",
-  //   categorySlug: "multi-purpose-locks",
+  //   categorySlug: "furniture-locks",
   //   quality: "best",
   //   status: "active",
   //   price: 0, // TODO
@@ -727,7 +728,7 @@ export const PRODUCTS = [
   {
     id: 23,
     name: "Multi Square Lever Silver Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO
@@ -746,7 +747,7 @@ export const PRODUCTS = [
   {
     id: 24,
     name: "Lever Cupboard SS Euro Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO
@@ -765,7 +766,7 @@ export const PRODUCTS = [
   {
     id: 25,
     name: "Euro Ultra SS Jordan Cupboard Lock",
-    categorySlug: "multi-purpose-locks",
+    categorySlug: "furniture-locks",
     quality: "best",
     status: "active",
     price: 0, // TODO

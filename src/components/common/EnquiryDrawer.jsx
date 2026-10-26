@@ -10,7 +10,17 @@ export default function EnquiryDrawer() {
 
   const close = () => dispatch(setDrawer(false));
   const submit = () => {
-    showToast("Enquiry sent! We'll contact you within 24 hours.");
+    const message = [
+      "Hi Ali Bhai Hardware, I would like to submit a bulk enquiry:",
+      "",
+      ...items.map((item, index) => `${index + 1}. ${item.name} - Quantity: ${item.qty}`),
+      "",
+      "please share details and how long my order will take to reach shop.",
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/917983757174?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    showToast("Enquiry opened in WhatsApp.");
     dispatch(clearEnquiry());
     close();
   };

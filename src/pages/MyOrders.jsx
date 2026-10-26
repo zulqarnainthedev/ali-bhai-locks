@@ -21,7 +21,7 @@ const MOCK_ORDERS = [
 ];
 
 const FAQS = [
-  { q: "How long does delivery take?", a: "Default delivery is 6 working days from order confirmation. Dispatch happens within 24 hrs from our Gujarat hub." },
+  { q: "How long does delivery take?", a: "Default delivery is within 7 days from order confirmation. Dispatch happens within 24 hrs from our Gujarat hub." },
   { q: "Minimum order quantity?", a: "Most padlock SKUs start at 50 pcs. Hardware items start at 100 pcs." },
   { q: "Do you ship pan-India?", a: "Yes — we deliver to all 28 states from our Surat distribution hub." },
   { q: "Can I get a custom logo on locks?", a: "Yes, OEM branding is available for orders above 1000 pcs. Contact us on WhatsApp." },
@@ -49,7 +49,7 @@ function orderToWhatsApp(order) {
     `Items:`,
     ...order.items.map((it, i) => `${i + 1}. ${it.name} — Qty ${it.qty} @ ₹${it.price}`),
     ``,
-    `Expected delivery: ${addDays(order.placedOn, 6)} (6 days default)`,
+    `Expected delivery: ${addDays(order.placedOn, 7)} (7 days default)`,
   ];
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
@@ -61,7 +61,7 @@ export default function MyOrders() {
 
   const user = useMemo(() => {
     try {
-      return JSON.parse(localStorage.getItem("abh_user") || "null");
+      return JSON.parse(localStorage.getItem("abh_user") || localStorage.getItem("user") || "null");
     } catch {
       return null;
     }
@@ -104,7 +104,7 @@ export default function MyOrders() {
       <section className="bg-slate-50 py-12">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <h2 className="font-display text-2xl font-bold">Your Orders</h2>
-          <p className="mt-1 text-sm text-slate-600">Default delivery within 6 days. Re-order with one tap on WhatsApp.</p>
+          <p className="mt-1 text-sm text-slate-600">Your order usually reaches your shop within 7 days. Re-order with one tap on WhatsApp.</p>
 
           <div className="mt-6 space-y-5">
             {MOCK_ORDERS.map((o) => (
@@ -113,7 +113,7 @@ export default function MyOrders() {
                   <div>
                     <div className="text-sm font-bold text-slate-900">Order {o.id}</div>
                     <div className="text-xs text-slate-500">
-                      Placed {new Date(o.placedOn).toLocaleDateString("en-IN")} • Expected by {addDays(o.placedOn, 6)}
+                      Placed {new Date(o.placedOn).toLocaleDateString("en-IN")} • Expected by {addDays(o.placedOn, 7)}
                     </div>
                   </div>
                   <StatusBadge status={o.status} />

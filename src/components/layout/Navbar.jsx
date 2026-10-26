@@ -1,15 +1,37 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Shield, Menu, X, ShoppingCart, User } from "lucide-react";
+import { Menu, X, ShoppingCart, User, ChevronDown, LogOut } from "lucide-react";
 import { toggleDrawer } from "../../store/store.js";
 import { CATEGORIES } from "../../data/products.js";
+import { removeToken } from "../../API/token.js";
 import logo from "../../assets/logo.png"
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const count = useSelector((s) => s.enquiry.items.length);
+
+  useEffect(() => {
+    try {
+      setUser(JSON.parse(localStorage.getItem("abh_user") || localStorage.getItem("user") || "null"));
+    } catch {
+      setUser(null);
+    }
+  }, [location.pathname]);
+
+  const logout = () => {
+    removeToken();
+    localStorage.removeItem("abh_user");
+    localStorage.removeItem("user");
+    setUser(null);
+    setAccountOpen(false);
+    navigate("/");
+  };
 
   const linkCls = ({ isActive }) =>
     `px-3 py-2 text-sm font-semibold transition ${
@@ -42,12 +64,39 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <NavLink
-            to="/login"
-            className="hidden sm:inline-flex h-10 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
-          >
-            <User className="h-4 w-4" /> Login
-          </NavLink>
+          {user ? (
+            <div className="relative hidden sm:block">
+              <button
+                type="button"
+                onClick={() => setAccountOpen((value) => !value)}
+                className="inline-flex h-10 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+              >
+                <User className="h-4 w-4 text-amber-600" />
+                <span className="max-w-28 truncate">Hi, {user.name || "Account"}</span>
+                <ChevronDown className={`h-4 w-4 transition ${accountOpen ? "rotate-180" : ""}`} />
+              </button>
+              {accountOpen && (
+                <div className="absolute right-0 top-12 z-50 w-52 rounded-xl bg-white p-2 shadow-xl ring-1 ring-slate-200">
+                  <Link to="/profile" onClick={() => setAccountOpen(false)} className="block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                    My Profile
+                  </Link>
+                  <Link to="/my-orders" onClick={() => setAccountOpen(false)} className="block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                    Track My Orders
+                  </Link>
+                  <button type="button" onClick={logout} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-semibold text-red-600 hover:bg-red-50">
+                    <LogOut className="h-4 w-4" /> Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <NavLink
+              to="/login"
+              className="hidden sm:inline-flex h-10 items-center gap-2 rounded-lg border border-slate-300 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            >
+              <User className="h-4 w-4" /> Login / Sign Up
+            </NavLink>
+          )}
           <button
             onClick={() => dispatch(toggleDrawer())}
             className="relative flex h-10 items-center gap-2 rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800"
@@ -78,7 +127,15 @@ export default function Navbar() {
             ))}
             <NavLink to="/about" onClick={() => setOpen(false)} className={linkCls}>About</NavLink>
             <NavLink to="/my-orders" onClick={() => setOpen(false)} className={linkCls}>My Orders</NavLink>
-            <NavLink to="/login" onClick={() => setOpen(false)} className={linkCls}>Login / Sign Up</NavLink>
+            {user ? (
+              <>
+                <NavLink to="/profile" onClick={() => setOpen(false)} className={linkCls}>My Profile</NavLink>
+                <NavLink to="/my-orders" onClick={() => setOpen(false)} className={linkCls}>Track My Orders</NavLink>
+                <button type="button" onClick={() => { setOpen(false); logout(); }} className="px-3 py-2 text-left text-sm font-semibold text-red-600">Logout</button>
+              </>
+            ) : (
+              <NavLink to="/login" onClick={() => setOpen(false)} className={linkCls}>Login / Sign Up</NavLink>
+            )}
           </div>
         </div>
       )}
